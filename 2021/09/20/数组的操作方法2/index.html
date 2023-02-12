@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="小刘同学">
+    
+    <title>
+        
+            数组的操作方法合集(2) |
+        
+        这是一个博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/77.svg">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/css/fontawesome.min.css">
+    <link href="/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/regular.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/v5-font-face.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/duotone.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/brands.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/solid.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
+    <script src="//evan.beee.top/js/waline.js"></script>
+    <link href='/css/css2.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avater.jpg","favicon":"/images/77.svg","article_img_align":"center","left_side_width":"240px","content_max_width":"960px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/wallheaven-bg.webp","description":"小刘同学的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.3.2"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                这是一个博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">数组的操作方法合集(2)</h1></span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avater.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">小刘同学</span>
+                        
+                            <span class="author-label">77</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-duotone fa-pen-line"></i>&nbsp;
+        <span class="pc">2021-09-20 00:00:00</span>
+        <span class="mobile">2021-09-20 00:00</span>
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-duotone fa-tags"></i></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/js/">js</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>8 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="不改变原数组的方法-8个"><a href="#不改变原数组的方法-8个" class="headerlink" title="不改变原数组的方法(8个):"></a><strong>不改变原数组的方法(8个):</strong></h3><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ES5</span>：</span><br><span class="line">    slice、join、toLocateString、toStrigin、cancat、indexOf、lastIndexOf、</span><br><span class="line">    <span class="title class_">ES7</span>：</span><br><span class="line">    includes</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="slice-浅拷贝数组的元素"><a href="#slice-浅拷贝数组的元素" class="headerlink" title="slice() 浅拷贝数组的元素"></a><strong>slice() 浅拷贝数组的元素</strong></h4><p>定义： 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象，且原数组不会被修改。</p>
+<p><strong>注意</strong>：字符串也有一个slice() 方法是用来提取字符串的，不要弄混了。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">slice</span>(begin, end);</span><br></pre></td></tr></table></figure></div>
+
+<p>begin(可选): 索引数值,接受负值，从该索引处开始提取原数组中的元素,默认值为0。</p>
+<p>end(可选):索引数值(不包括),接受负值，在该索引处前结束提取原数组元素，默认值为数组末尾(包括最后一个元素)。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// [&#x27;hello&#x27;]</span></span><br><span class="line">    a[<span class="number">0</span>]=<span class="string">&#x27;改变原数组&#x27;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;hello&#x27;]</span></span><br><span class="line">    b[<span class="number">0</span>]=<span class="string">&#x27;改变拷贝的数组&#x27;</span>;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;改变拷贝的数组&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如上：新数组是浅拷贝的，<strong>元素是简单数据类型，改变之后不会互相干扰</strong></p>
+<p>如果是<strong>复杂数据类型(对象,数组)的话，改变其中一个，另外一个也会改变</strong></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b,a); <span class="comment">// [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]  [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// a[0].name=&#x27;改变原数组&#x27;;</span></span><br><span class="line">    <span class="comment">// console.log(b,a); // [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// b[0].name=&#x27;改变拷贝数组&#x27;,b[0].koro=&#x27;改变拷贝数组&#x27;;</span></span><br><span class="line">    <span class="comment">//  [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="join-数组转字符串"><a href="#join-数组转字符串" class="headerlink" title="join() 数组转字符串"></a><strong>join() 数组转字符串</strong></h4><p>定义: join() 方法用于把数组中的所有元素通过指定的分隔符进行分隔放入一个字符串，返回生成的字符串。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">join</span>(str)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:str(可选): 指定要使用的分隔符，默认使用逗号作为分隔符。</p>
+<blockquote>
+<p>使用join方法或者下文说到的toString方法时，当数组中的元素也是数组或者是对象时会出现什么情况？</p>
+</blockquote>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [[<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="string">&#x27;23&#x27;</span>],<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str1=a.<span class="title function_">join</span>(); <span class="comment">// OBKoro1,23,test</span></span><br><span class="line">    <span class="keyword">let</span> b= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="attr">age</span>:<span class="string">&#x27;23&#x27;</span>&#125;,<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str2 = b.<span class="title function_">join</span>(); <span class="comment">// [object Object],test</span></span><br><span class="line">    <span class="comment">// 对象转字符串推荐JSON.stringify(obj);</span></span><br></pre></td></tr></table></figure></div>
+
+<p>所以，<code>join()/toString()</code>方法在数组元素是数组的时候，会将里面的数组也调用<code>join()/toString()</code>,如果是对象的话，对象会被转为<code>[object Object]</code>字符串。</p>
+<h4 id="toLocaleString-数组转字符串"><a href="#toLocaleString-数组转字符串" class="headerlink" title="toLocaleString() 数组转字符串"></a><strong>toLocaleString() 数组转字符串</strong></h4><p>定义: 返回一个表示数组元素的字符串。该字符串由数组中的每个元素的 toLocaleString() 返回值经调用 join() 方法连接（由逗号隔开）组成。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：无</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;,<span class="number">23</span>,<span class="string">&#x27;abcd&#x27;</span>,<span class="keyword">new</span> <span class="title class_">Date</span>()];</span><br><span class="line"><span class="keyword">let</span> str=a.<span class="title function_">toLocaleString</span>(); <span class="comment">// [object Object],23,abcd,2018/5/28 下午1:52:20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如上述栗子：调用数组的<code>toLocaleString</code>方法，数组中的每个元素都会调用自身的<code>toLocaleString</code>方法，对象调用对象的<code>toLocaleString</code>Date调用Date的<code>toLocaleString</code></p>
+<h4 id="toString-数组转字符串-不推荐"><a href="#toString-数组转字符串-不推荐" class="headerlink" title="toString() 数组转字符串 不推荐"></a><strong>toString() 数组转字符串 不推荐</strong></h4><p>该方法的效果和join方法一样，都是用于数组转字符串的，但是与join方法相比没有优势，也不能自定义字符串的分隔符，因此不推荐使用。</p>
+<h4 id="cancat-合并两个或多个数组"><a href="#cancat-合并两个或多个数组" class="headerlink" title="cancat 合并两个或多个数组"></a><strong>cancat 合并两个或多个数组</strong></h4><p>定义： 方法用于合并两个或多个数组，返回一个新数组。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newArr =oldArray.<span class="title function_">concat</span>(arrayX,arrayX,......,arrayX)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>arrayX（必须）：该参数可以是具体的值，也可以是数组对象。可以是任意多个。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">    <span class="keyword">let</span> b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line">    <span class="comment">//连接两个数组</span></span><br><span class="line">    <span class="keyword">let</span> newVal=a.<span class="title function_">concat</span>(b); <span class="comment">// [1,2,3,4,5,6]</span></span><br><span class="line">    <span class="comment">// 连接三个数组</span></span><br><span class="line">    <span class="keyword">let</span> c = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">    <span class="keyword">let</span> newVal2 = a.<span class="title function_">concat</span>(b, c); <span class="comment">// [1,2,3,4,5,6,7,8,9]</span></span><br><span class="line">    <span class="comment">// 添加元素</span></span><br><span class="line">    <span class="keyword">let</span> newVal3 = a.<span class="title function_">concat</span>(<span class="string">&#x27;添加元素&#x27;</span>,b, c,<span class="string">&#x27;再加一个&#x27;</span>); </span><br><span class="line">    <span class="comment">// [1,2,3,&quot;添加元素&quot;,4,5,6,7,8,9,&quot;再加一个&quot;]</span></span><br><span class="line">   <span class="comment">// 合并嵌套数组  会浅拷贝嵌套数组</span></span><br><span class="line">   <span class="keyword">let</span> d = [<span class="number">1</span>,<span class="number">2</span> ];</span><br><span class="line">   <span class="keyword">let</span> f = [<span class="number">3</span>,[<span class="number">4</span>]];</span><br><span class="line">   <span class="keyword">let</span> newVal4 = d.<span class="title function_">concat</span>(f); <span class="comment">// [1,2,3,[4]]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES6扩展运算符-合并数组"><a href="#ES6扩展运算符-合并数组" class="headerlink" title="ES6扩展运算符...合并数组"></a><strong>ES6扩展运算符<code>...</code>合并数组</strong></h4><p>因为ES6的语法更简洁易懂，所以现在合并数组我大部分用<code>...</code> 来处理，<code>...</code>运算符可以实现<code>cancat</code>的每个栗子，且更简洁和具有高度自定义数组元素位置的效果。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">let</span> b = [ <span class="number">4</span>,...a, <span class="number">4</span>, <span class="number">4</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">//  [2, 3, 4, 5] [4,2,3,4,5,4,4]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="indexOf-查找数组是否存在某个元素，返回下标"><a href="#indexOf-查找数组是否存在某个元素，返回下标" class="headerlink" title="indexOf() 查找数组是否存在某个元素，返回下标"></a><strong>indexOf() 查找数组是否存在某个元素，返回下标</strong></h4><p>定义: 返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">indexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>searchElement(必须):被查找的元素</p>
+<p>fromIndex(可选):开始查找的位置(不能大于等于数组的长度，返回-1)，接受负值，默认值为0。</p>
+<p>严格相等的搜索:</p>
+<p>数组的indexOf搜索跟字符串的indexOf不一样,数组的indexOf使用严格相等<code>===</code>搜索元素，即<strong>数组元素要完全匹配</strong>才能搜索成功。</p>
+<p><strong>注意</strong>：indexOf()不能识别<code>NaN</code></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;啦啦&#x27;</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">24</span>,<span class="title class_">NaN</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;NaN&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦啦&#x27;</span>)); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure></div>
+
+<p>使用场景：</p>
+<ol>
+<li>数组去重</li>
+<li>根据获取的数组下标执行操作，改变数组中的值等。</li>
+<li>判断是否存在，执行操作。</li>
+</ol>
+<h4 id="lastIndexOf-查找指定元素在数组中的最后一个位置"><a href="#lastIndexOf-查找指定元素在数组中的最后一个位置" class="headerlink" title="lastIndexOf() 查找指定元素在数组中的最后一个位置"></a><strong>lastIndexOf() 查找指定元素在数组中的最后一个位置</strong></h4><p>定义: 方法返回指定元素,在数组中的最后一个的索引，如果不存在则返回 -1。（从数组后面往前查找）</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="title function_">lastIndexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>searchElement(必须): 被查找的元素</p>
+<p>fromIndex(可选): 逆向查找开始位置，默认值数组的长度-1，即查找整个数组。</p>
+<p>关于fromIndex有三个规则:</p>
+<ol>
+<li>正值。如果该值大于或等于数组的长度，则整个数组会被查找。</li>
+<li>负值。将其视为从数组末尾向前的偏移。(比如-2，从数组最后第二个元素开始往前查找)</li>
+<li>负值。其绝对值大于数组长度，则方法返回 -1，即数组不会被查找。</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="number">4</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="string">&#x27;Koro1&#x27;</span>]; <span class="comment">// 数组长度为10</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,4); // 从下标4开始往前找 返回下标2</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,100); //  大于或数组的长度 查找整个数组 返回9</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,-11); // -1 数组不会被查找</span></span><br><span class="line"> <span class="keyword">let</span> b=a.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;Koro1&#x27;</span>,-<span class="number">9</span>); <span class="comment">// 从第二个元素4往前查找，没有找到 返回-1</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES7-includes-查找数组是否包含某个元素-返回布尔"><a href="#ES7-includes-查找数组是否包含某个元素-返回布尔" class="headerlink" title="ES7 includes() 查找数组是否包含某个元素 返回布尔"></a><strong>ES7 includes() 查找数组是否包含某个元素 返回布尔</strong></h4><p>定义： 返回一个布尔值，表示某个数组是否包含给定的值</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array.<span class="title function_">includes</span>(searchElement,fromIndex=<span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>searchElement(必须):被查找的元素</p>
+<p>fromIndex(可选):默认值为0，参数表示搜索的起始位置，接受负值。正值超过数组长度，数组不会被搜索，返回false。负值绝对值超过长数组度，重置从0开始搜索。</p>
+<p><strong>includes方法是为了弥补indexOf方法的缺陷而出现的:</strong></p>
+<ol>
+<li>indexOf方法不能识别<code>NaN</code></li>
+<li>indexOf方法检查是否包含某个值不够语义化，需要判断是否不等于<code>1</code>，表达不够直观</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="title class_">NaN</span>];</span><br><span class="line">    <span class="comment">// let b=a.includes(NaN); // true 识别NaN</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,100); // false 超过数组长度 不搜索</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-3);  // true 从倒数第三个元素开始搜索 </span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-100);  // true 负值绝对值超过数组长度，搜索整个数组</span></span><br></pre></td></tr></table></figure></div>
+
+<p>兼容性(MDN): chrome47, Firefox 43,Edge 14,Opera 34, Safari 9,IE 未实现。</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/js/">#js</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/09/30/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%953/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数组的操作方法合集(3)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/09/10/flex%E5%B8%83%E5%B1%80/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数组的操作方法合集(1)</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">小刘同学</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.3.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-duotone fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list-tree"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E6%94%B9%E5%8F%98%E5%8E%9F%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95-8%E4%B8%AA"><span class="nav-text">不改变原数组的方法(8个):</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#slice-%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%95%B0%E7%BB%84%E7%9A%84%E5%85%83%E7%B4%A0"><span class="nav-text">slice() 浅拷贝数组的元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#join-%E6%95%B0%E7%BB%84%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">join() 数组转字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toLocaleString-%E6%95%B0%E7%BB%84%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">toLocaleString() 数组转字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toString-%E6%95%B0%E7%BB%84%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-%E4%B8%8D%E6%8E%A8%E8%8D%90"><span class="nav-text">toString() 数组转字符串 不推荐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cancat-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%88%96%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84"><span class="nav-text">cancat 合并两个或多个数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES6%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%90%88%E5%B9%B6%E6%95%B0%E7%BB%84"><span class="nav-text">ES6扩展运算符...合并数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#indexOf-%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%8B%E6%A0%87"><span class="nav-text">indexOf() 查找数组是否存在某个元素，返回下标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lastIndexOf-%E6%9F%A5%E6%89%BE%E6%8C%87%E5%AE%9A%E5%85%83%E7%B4%A0%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-text">lastIndexOf() 查找指定元素在数组中的最后一个位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES7-includes-%E6%9F%A5%E6%89%BE%E6%95%B0%E7%BB%84%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0-%E8%BF%94%E5%9B%9E%E5%B8%83%E5%B0%94"><span class="nav-text">ES7 includes() 查找数组是否包含某个元素 返回布尔</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/header-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/back2top.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/local-search.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/code-copy.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/left-side-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -9,7 +9,7 @@
     
     <title>
         
-            关于回流重绘 |
+            有关DOM节点 |
         
         这是一个博客
     </title>
@@ -140,7 +140,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">关于回流重绘</h1></span>
+            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">有关DOM节点</h1></span>
         </div>
 
         
@@ -159,8 +159,8 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-duotone fa-pen-line"></i>&nbsp;
-        <span class="pc">2020-06-06 00:00:00</span>
-        <span class="mobile">2020-06-06 00:00</span>
+        <span class="pc">2020-11-17 16:22:13</span>
+        <span class="mobile">2020-11-17 16:22</span>
     </span>
     
     
@@ -169,7 +169,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/css/">css</a>&nbsp;
+                        <a href="/tags/API/">API</a>&nbsp;
                     </li>
                 
             </ul>
@@ -179,12 +179,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1k Words</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>709 Words</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>3 Mins</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 Mins</span>
         </span>
     
     
@@ -196,58 +196,82 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="一-需要先了解一下浏览器的渲染机制"><a href="#一-需要先了解一下浏览器的渲染机制" class="headerlink" title="一.需要先了解一下浏览器的渲染机制"></a>一.需要先了解一下浏览器的渲染机制</h2><p><img lazyload src="/images/loading.svg" data-src="/./img/2022111-160838.jpg" alt="2022111-160838.jpg"></p>
-<p>从上面这个图，我们可以看到，浏览器渲染过程如下：</p>
-<ol>
-<li><p>解析HTML，生成DOM树，解析CSS，生成CSS OM</p>
-</li>
-<li><p>将DO M树和CSSOM树结合，生成渲染树</p>
-</li>
-<li><p>回流：根据生成的渲染树进行回流，得到节点的位置，大小等</p>
-</li>
-<li><p>重绘：根据渲染树以及回流得到的信息进行绘制</p>
-</li>
-<li><p>最后展示在页面上</p>
-<p> <strong>回流一定会引起重绘，重绘不一定会引起回流</strong></p>
-</li>
-</ol>
-<p>看一下DOM树和CSSOM树是怎么样合成为渲染树的</p>
-<p><img lazyload src="/images/loading.svg" data-src="/./img/49d3106613e04a9ab56b108ddbb19f4a.png" alt="49d3106613e04a9ab56b108ddbb19f4a.png"></p>
-<p>浏览器在把这两个树进行合成渲染树的过程中会确定我们的节点是否可见，和各个节点的样式并精确他们的位置</p>
-<p>这里可以看到，如果对一个元素使用了display：none，那么在渲染树中是不存在这个元素的。所以渲染树只包含可见节点</p>
-<h2 id="二、回流"><a href="#二、回流" class="headerlink" title="二、回流"></a>二、回流</h2><p>当我们渲染树中的一些元素的结构或者尺寸等发生改变，浏览器重新渲染 部分或者全部文档的过程就叫做回流。</p>
-<p><strong>会导致回流的操作：</strong></p>
-<ol>
-<li>页面首次渲染</li>
-<li>浏览器窗口大小发生变化（如果是按照百分比布局的话，元素的宽度发生变化，就相当于尺寸发生变化，会引起回流）</li>
-<li>内容变换 ，比如文本变化或图片被另一个不同尺寸的图片所替代</li>
-<li>添加或者删除可见的节点</li>
-<li>元素的位置发生变化</li>
-<li>元素的尺寸发生变化（包括外边距、内边框、边框大小、高度和宽度等）</li>
-</ol>
-<p>…</p>
-<h2 id="三、重绘"><a href="#三、重绘" class="headerlink" title="三、重绘"></a>三、重绘</h2><p>当页面中元素样式的改变不影响它在文档流中的位置，浏览器会将样式复制给元素，这个过程叫做重绘。</p>
-<h2 id="四、如何减少回流、重绘"><a href="#四、如何减少回流、重绘" class="headerlink" title="四、如何减少回流、重绘"></a>四、如何减少回流、重绘</h2><ul>
-<li><p>合并对DOM样式的修改，采用css class来修改</p>
-  <div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>)再</span><br><span class="line">box.<span class="property">style</span>.<span class="property">margin</span> = <span class="string">&#x27;5px&#x27;</span></span><br><span class="line">box.<span class="property">style</span>.<span class="property">borderRadius</span> = <span class="string">&#x27;12px&#x27;</span></span><br><span class="line">box.<span class="property">style</span>.<span class="property">boxShadow</span> = <span class="string">&#x27;1px 3px 4px #ccc&#x27;</span></span><br></pre></td></tr></table></figure></div>
-<p>  建议使用css class</p>
-  <div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">active</span>&#123; </span><br><span class="line"> <span class="attr">margin</span>: 5px; </span><br><span class="line"> border-<span class="attr">dadius</span>: 12px; </span><br><span class="line"> box-<span class="attr">shadow</span>: 1px 3px 4px #ccc&#125;</span><br><span class="line"><span class="keyword">const</span> box = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>).<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;active&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>将DOM离线</p>
-  <div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先为元素设置display：none操作结束后再把它显示出来。</span></span><br><span class="line"><span class="comment">//因为在display属性为none的元素上进行的DOM操作不会引发回流和重绘，</span></span><br><span class="line"><span class="comment">//操作完之后再将display改为显示，只会触发一次回流与重绘</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> container = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;container&#x27;</span>)</span><br><span class="line">container.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;none&#x27;</span></span><br><span class="line">container.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;100px&#x27;</span></span><br><span class="line">container.<span class="property">style</span>.<span class="property">height</span> = <span class="string">&#x27;200px&#x27;</span></span><br><span class="line">container.<span class="property">style</span>.<span class="property">border</span> = <span class="string">&#x27;10px solid red&#x27;</span></span><br><span class="line">container.<span class="property">style</span>.<span class="property">color</span> = <span class="string">&#x27;red&#x27;</span></span><br><span class="line">...（省略了许多类似的后续操作）</span><br><span class="line">container.<span class="property">style</span>.<span class="property">display</span> = <span class="string">&#x27;block&#x27;</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>当需要对多个DOM进行操作的时候，避免直接对单个DOM进行操作</p>
-  <div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用 createDocumentFragment （创建文档碎片节点）方法创建虚拟的 dom 对象</span></span><br><span class="line"><span class="comment">// 这样的能将对 dom 的多次修改合并为一次，就能减少回流和重绘的次数</span></span><br><span class="line">    <span class="keyword">let</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> box = <span class="variable language_">document</span>.<span class="title function_">createDocumentFragment</span>()</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> li = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;li&quot;</span>)</span><br><span class="line">        li.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(i))</span><br><span class="line">        box.<span class="title function_">appendChild</span>(li)</span><br><span class="line">    &#125;</span><br><span class="line">    ul.<span class="title function_">appendChild</span>(box）</span><br><span class="line"><span class="comment">//createDocumentFragment使用appendChild追加子元素时，</span></span><br><span class="line"><span class="comment">//如果把它追加进页面中，则插入的是它本身和它的所有子孙节点</span></span><br></pre></td></tr></table></figure></div>
-</li>
-<li><p>不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局，如果一个表很大的话，浏览器会等全部渲染好在进行下一步，这个等待的过程会降低用户体验</p>
-</li>
-<li><p>尽可能不要修改影响范围比较大的 DOM，就是如果你要改变子元素的样式，就不要去它的父元素设置，不通过父元素去影响子元素，直接修改子元素。</p>
-</li>
-<li><p>动画实现速度的选择，动画速度越快，回流次数越多，也可以选择使用 <a class="link" target="_blank" rel="noopener" href="https://juejin.cn/post/7147953172768620575">requestAnimationFrame<i class="fas fa-external-link-alt"></i></a>（请求动画帧），将不会进行重绘和回流</p>
-</li>
+            <h1 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h1><p>网页中的所有内容都是节点（标签、属性、文本、注释等）</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230212201857603.png" alt="image-20230212201857603.png"></p>
+<p>节点一般分为下面3类：</p>
+<ul>
+<li>元素节点：例如   div标签</li>
+<li>属性节点：例如  class属性</li>
+<li>文本节点：例如  文字、空格、换行等</li>
 </ul>
-<p>…</p>
-<p>总之：回流的性能消耗要比重绘大，能重绘就不回流，能不重绘就不重绘</p>
+<p>节点的层级：</p>
+<ul>
+<li>根节点：<html>，有且只能有一个</html></li>
+<li>父节点：某个节点的上一级节点</li>
+<li>子节点：某个节点的下一级节点</li>
+<li>兄弟节点：拥有同一个父节点的节点</li>
+</ul>
+<p>这里重点学习元素节点，可以更好的让我们搞清楚标签元素之间的关系</p>
+<h3 id="1-父节点"><a href="#1-父节点" class="headerlink" title="1.父节点"></a>1.父节点</h3><p>父节点查找：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">子元素.<span class="property">parentNode</span></span><br></pre></td></tr></table></figure></div>
+
+<p>返回最近一级的父节点，找不到则返回null</p>
+<h3 id="2-子节点"><a href="#2-子节点" class="headerlink" title="2.子节点"></a>2.子节点</h3><p>子节点查找：</p>
+<p>2.1 childNodes：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父元素.<span class="property">childNodes</span></span><br></pre></td></tr></table></figure></div>
+
+<p>获得的是当前元素的所有子节点的集合</p>
+<p>2.2 children属性：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父元素.<span class="property">children</span></span><br></pre></td></tr></table></figure></div>
+
+<p>只返回子元素节点（不返回属性节点、文本节点）</p>
+<p>返回的是一个伪数组</p>
+<p>2.3 返回第一个子节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素名.<span class="property">firstChild</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.4 返回最后一个子节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素名.<span class="property">lastChild</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.5 第一个子元素节点（不包含文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素名.<span class="property">firstElementChild</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.6 最后一个子元素节点（不包含文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素名 . lsstElementChild</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-兄弟节点"><a href="#3-兄弟节点" class="headerlink" title="3.兄弟节点"></a>3.兄弟节点</h3><p>兄弟关系查找</p>
+<p>3.1 获取下一个兄弟节点（包含元素节点、文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素名 . nextSibling</span><br></pre></td></tr></table></figure></div>
+
+<p>3.2 获取上一个兄弟节点（包含元素节点、文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素名 . previousSibling</span><br></pre></td></tr></table></figure></div>
+
+<p>3.3 下一个兄弟节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素.<span class="property">nextElementSibling</span></span><br></pre></td></tr></table></figure></div>
+
+<p>3.4 上一个兄弟节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素.<span class="property">previousElementSibling</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-创建一个新的网页元素，再添加到网页内"><a href="#4-创建一个新的网页元素，再添加到网页内" class="headerlink" title="4.创建一个新的网页元素，再添加到网页内"></a>4.创建一个新的网页元素，再添加到网页内</h3><p>1.创建一个新的元素节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;标签名&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>2.插入到某个父元素中&#x2F;添加节点</p>
+<p>插入到父元素的最后一个子元素：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父元素.<span class="title function_">appendChild</span>(要插入的元素)</span><br></pre></td></tr></table></figure></div>
+
+<p>插入到父元素中某个子元素的前面</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父元素.<span class="title function_">insertBefore</span>(插入的元素, 放到哪个元素的前面)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-赋节点"><a href="#5-赋节点" class="headerlink" title="5.赋节点"></a>5.赋节点</h3><p>克隆一个已经有的元素节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素.<span class="title function_">cloneNode</span>(布尔值）</span><br></pre></td></tr></table></figure></div>
+
+<p>布尔值为true，深拷贝，代表克隆是会包含后代节点一起克隆</p>
+<p>布尔值为false，浅拷贝，代表克隆是不包含后代节点，默认为false</p>
+<h3 id="6-删除节点"><a href="#6-删除节点" class="headerlink" title="6.删除节点"></a>6.删除节点</h3><p>在JavaScript原生DOM中，要删除元素必须通过父元素删除</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父元素.<span class="property">removeChild</span>（要删除的元素）</span><br></pre></td></tr></table></figure></div>
+
+<p>这里要注意，如果不存在父子关系，删除则不成功</p>
+<p>删除节点和隐藏节点（display：none）是有区别的：</p>
+<p>隐藏的节点还存在，删除节点是直接从html中删除节点</p>
 
         </div>
 
@@ -257,7 +281,7 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/css/">#css</a>&nbsp;
+                        <a href="/tags/API/">#API</a>&nbsp;
                     </li>
                 
             </ul>
@@ -269,18 +293,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2020/07/20/js%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+                           href="/2021/09/10/flex%E5%B8%83%E5%B1%80/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">JavaScript中的数据类型</span>
+                                <span class="post-nav-title-item">数组的操作方法合集(1)</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/11/17/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%92%8C%E6%8F%90%E5%8D%87/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">变量声明和提升</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -384,7 +423,7 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list-tree"></i> <strong>Contents</strong></div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9C%80%E8%A6%81%E5%85%88%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6"><span class="nav-text">一.需要先了解一下浏览器的渲染机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E6%B5%81"><span class="nav-text">二、回流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%87%8D%E7%BB%98"><span class="nav-text">三、重绘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E5%9B%9E%E6%B5%81%E3%80%81%E9%87%8D%E7%BB%98"><span class="nav-text">四、如何减少回流、重绘</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM%E8%8A%82%E7%82%B9"><span class="nav-text">DOM节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%88%B6%E8%8A%82%E7%82%B9"><span class="nav-text">1.父节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AD%90%E8%8A%82%E7%82%B9"><span class="nav-text">2.子节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%84%E5%BC%9F%E8%8A%82%E7%82%B9"><span class="nav-text">3.兄弟节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E7%BD%91%E9%A1%B5%E5%85%83%E7%B4%A0%EF%BC%8C%E5%86%8D%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%BD%91%E9%A1%B5%E5%86%85"><span class="nav-text">4.创建一个新的网页元素，再添加到网页内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E8%B5%8B%E8%8A%82%E7%82%B9"><span class="nav-text">5.赋节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-text">6.删除节点</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>

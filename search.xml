@@ -1,6 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>有关DOM节点</title>
+    <url>/2020/11/17/DOM%E8%8A%82%E7%82%B9/</url>
+    <content><![CDATA[<h1 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h1><p>网页中的所有内容都是节点（标签、属性、文本、注释等）</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230212201857603.png" alt="image-20230212201857603.png"></p>
+<p>节点一般分为下面3类：</p>
+<ul>
+<li>元素节点：例如   div标签</li>
+<li>属性节点：例如  class属性</li>
+<li>文本节点：例如  文字、空格、换行等</li>
+</ul>
+<p>节点的层级：</p>
+<ul>
+<li>根节点：<html>，有且只能有一个</html></li>
+<li>父节点：某个节点的上一级节点</li>
+<li>子节点：某个节点的下一级节点</li>
+<li>兄弟节点：拥有同一个父节点的节点</li>
+</ul>
+<p>这里重点学习元素节点，可以更好的让我们搞清楚标签元素之间的关系</p>
+<h3 id="1-父节点"><a href="#1-父节点" class="headerlink" title="1.父节点"></a>1.父节点</h3><p>父节点查找：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">子元素.<span class="property">parentNode</span></span><br></pre></td></tr></table></figure></div>
+
+<p>返回最近一级的父节点，找不到则返回null</p>
+<h3 id="2-子节点"><a href="#2-子节点" class="headerlink" title="2.子节点"></a>2.子节点</h3><p>子节点查找：</p>
+<p>2.1 childNodes：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">父元素.<span class="property">childNodes</span></span><br></pre></td></tr></table></figure></div>
+
+<p>获得的是当前元素的所有子节点的集合</p>
+<p>2.2 children属性：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">父元素.<span class="property">children</span></span><br></pre></td></tr></table></figure></div>
+
+<p>只返回子元素节点（不返回属性节点、文本节点）</p>
+<p>返回的是一个伪数组</p>
+<p>2.3 返回第一个子节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素名.<span class="property">firstChild</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.4 返回最后一个子节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素名.<span class="property">lastChild</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.5 第一个子元素节点（不包含文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素名.<span class="property">firstElementChild</span></span><br></pre></td></tr></table></figure></div>
+
+<p>2.6 最后一个子元素节点（不包含文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素名 . lsstElementChild</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-兄弟节点"><a href="#3-兄弟节点" class="headerlink" title="3.兄弟节点"></a>3.兄弟节点</h3><p>兄弟关系查找</p>
+<p>3.1 获取下一个兄弟节点（包含元素节点、文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素名 . nextSibling</span><br></pre></td></tr></table></figure></div>
+
+<p>3.2 获取上一个兄弟节点（包含元素节点、文本节点、属性节点）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素名 . previousSibling</span><br></pre></td></tr></table></figure></div>
+
+<p>3.3 下一个兄弟节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素.<span class="property">nextElementSibling</span></span><br></pre></td></tr></table></figure></div>
+
+<p>3.4 上一个兄弟节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素.<span class="property">previousElementSibling</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-创建一个新的网页元素，再添加到网页内"><a href="#4-创建一个新的网页元素，再添加到网页内" class="headerlink" title="4.创建一个新的网页元素，再添加到网页内"></a>4.创建一个新的网页元素，再添加到网页内</h3><p>1.创建一个新的元素节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;标签名&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>2.插入到某个父元素中&#x2F;添加节点</p>
+<p>插入到父元素的最后一个子元素：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">父元素.<span class="title function_">appendChild</span>(要插入的元素)</span><br></pre></td></tr></table></figure></div>
+
+<p>插入到父元素中某个子元素的前面</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">父元素.<span class="title function_">insertBefore</span>(插入的元素, 放到哪个元素的前面)</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5-赋节点"><a href="#5-赋节点" class="headerlink" title="5.赋节点"></a>5.赋节点</h3><p>克隆一个已经有的元素节点</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">元素.<span class="title function_">cloneNode</span>(布尔值）</span><br></pre></td></tr></table></figure></div>
+
+<p>布尔值为true，深拷贝，代表克隆是会包含后代节点一起克隆</p>
+<p>布尔值为false，浅拷贝，代表克隆是不包含后代节点，默认为false</p>
+<h3 id="6-删除节点"><a href="#6-删除节点" class="headerlink" title="6.删除节点"></a>6.删除节点</h3><p>在JavaScript原生DOM中，要删除元素必须通过父元素删除</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">父元素.<span class="property">removeChild</span>（要删除的元素）</span><br></pre></td></tr></table></figure></div>
+
+<p>这里要注意，如果不存在父子关系，删除则不成功</p>
+<p>删除节点和隐藏节点（display：none）是有区别的：</p>
+<p>隐藏的节点还存在，删除节点是直接从html中删除节点</p>
+]]></content>
+      <tags>
+        <tag>API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组的操作方法合集(1)</title>
+    <url>/2021/09/10/flex%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h2 id="创建一个数组"><a href="#创建一个数组" class="headerlink" title="创建一个数组"></a>创建一个数组</h2><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 字面量方式:</span></span><br><span class="line"><span class="comment">// 这个方法也是我们最常用的，在初始化数组的时候 相当方便</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>];  <span class="comment">// [3,11,8];</span></span><br><span class="line"><span class="comment">// 构造器:</span></span><br><span class="line"><span class="comment">// 实际上 new Array === Array,加不加new 一点影响都没有。</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">Array</span>(); <span class="comment">// [] </span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">Array</span>(<span class="number">3</span>); <span class="comment">// [,,] </span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">Array</span>(<span class="number">3</span>,<span class="number">11</span>,<span class="number">8</span>); <span class="comment">// [ 3,11,8 ]</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li><strong>ES6 Array.of() 返回由所有参数值组成的数组</strong></li>
+</ol>
+<p>定义：返回由所有参数值组成的数组，如果没有参数，就返回一个空数组。</p>
+<p>目的：Array.of() 出现的目的是为了解决上述构造器因参数个数不同，导致的行为有差异的问题</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="title class_">Array</span>.<span class="title function_">of</span>(<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>); <span class="comment">// [3,11,8]</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="title class_">Array</span>.<span class="title function_">of</span>(<span class="number">3</span>); <span class="comment">// [3]</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li><strong>ES6 Arrary.from() 将两类对象转为真正的数组</strong></li>
+</ol>
+<p>定义：用于将两类对象转为真正的数组（不改变原对象，返回新的数组）。</p>
+<p>参数：</p>
+<p>第一个参数(必需):要转化为真正数组的对象。</p>
+<p>第二个参数(可选): 类似数组的map方法，对每个元素进行处理，将处理后的值放入返回的数组。</p>
+<p>第三个参数(可选): 用来绑定this。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 对象拥有length属性</span></span><br><span class="line">    <span class="keyword">let</span> obj = &#123;<span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>, <span class="number">2</span>:<span class="string">&#x27;c&#x27;</span>, <span class="attr">length</span>: <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(obj); <span class="comment">// [&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;];</span></span><br><span class="line">    <span class="comment">// 2. 部署了 Iterator接口的数据结构 比如:字符串、Set、NodeList对象</span></span><br><span class="line">    <span class="keyword">let</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="string">&#x27;hello&#x27;</span>); <span class="comment">// [&#x27;h&#x27;,&#x27;e&#x27;,&#x27;l&#x27;,&#x27;l&#x27;,&#x27;o&#x27;]</span></span><br><span class="line">    <span class="keyword">let</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="keyword">new</span> <span class="title class_">Set</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>])); <span class="comment">// [&#x27;a&#x27;,&#x27;b&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><p>数组原型提供了非常多的方法，这里分为三类来讲，一类会改变原数组的值，一类是不会改变原数组，以及数组的遍历方法。</p>
+<h3 id="改变原数组的方法-9个"><a href="#改变原数组的方法-9个" class="headerlink" title="改变原数组的方法(9个):"></a><strong>改变原数组的方法(9个):</strong></h3><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="title class_">ES5</span>:</span><br><span class="line">     a.<span class="title function_">splice</span>()/ a.<span class="title function_">sort</span>() / a.<span class="title function_">pop</span>()/ a.<span class="title function_">shift</span>()/  a.<span class="title function_">push</span>()/ a.<span class="title function_">unshift</span>()/ a.<span class="title function_">reverse</span>()</span><br><span class="line">    <span class="title class_">ES6</span>:</span><br><span class="line">    a.<span class="title function_">copyWithin</span>() / a.<span class="property">fill</span></span><br></pre></td></tr></table></figure></div>
+
+<p>对于这些能够改变原数组的方法，要注意避免在循环遍历中改变原数组的选项，比如: 改变数组的长度，导致遍历的长度出现问题</p>
+<h4 id="splice-添加-x2F-删除数组元素"><a href="#splice-添加-x2F-删除数组元素" class="headerlink" title="splice() 添加&#x2F;删除数组元素"></a><strong>splice() 添加&#x2F;删除数组元素</strong></h4><p>定义： splice() 方法<strong>向&#x2F;从数组中添加&#x2F;删除</strong>项目，然后返回被删除的项目</p>
+<p>语法： <code>array.splice(index,howmany,item1,.....,itemX)</code></p>
+<p>参数:</p>
+<ul>
+<li>index：必需。整数，规定添加&#x2F;删除项目的位置，使用负数可从数组结尾处规定位置。</li>
+<li>howmany：可选。要删除的项目数量。如果设置为 0，则不会删除项目。</li>
+<li>item1, …, itemX： 可选。向数组添加的新项目。</li>
+</ul>
+<p>返回值: 如果有元素被删除,返回包含被删除项目的新数组。</p>
+<p>注意点：</p>
+<ol>
+<li>数组如果元素不够，会删除到最后一个元素为止</li>
+<li>操作的元素，包括开始的那个元素</li>
+<li>可以添加很多个元素</li>
+<li>添加是在开始的元素前面添加的</li>
+</ol>
+<h4 id="sort-数组排序"><a href="#sort-数组排序" class="headerlink" title="sort() 数组排序"></a><strong>sort() 数组排序</strong></h4><p>定义: sort()方法对数组元素进行排序，并返回这个数组。</p>
+<p>参数可选: 规定排序顺序的比较函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 字符串排列 看起来很正常</span></span><br><span class="line">    <span class="keyword">var</span> a = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line">    a.<span class="title function_">sort</span>(); <span class="comment">// [&quot;Apple&quot;,&quot;Banana&quot;,&quot;Mango&quot;,&quot;Orange&quot;]</span></span><br><span class="line">    <span class="comment">// 数字排序的时候 因为转换成Unicode字符串之后，有些数字会比较大会排在后面 这显然不是我们想要的</span></span><br><span class="line">    <span class="keyword">var</span>	a = [<span class="number">10</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">20</span>,<span class="number">25</span>,<span class="number">8</span>];</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">sort</span>()) <span class="comment">// [1,10,20,25,3,8];</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li><p><strong>比较函数的两个参数：</strong></p>
+<p>sort的比较函数有两个默认参数，要在函数中接收这两个参数，这两个参数是数组中两个要比较的元素，通常我们用 a 和 b 接收两个将要比较的元素：</p>
+</li>
+</ol>
+<ul>
+<li>若比较函数返回值&lt;0，那么a将排到b的前面;</li>
+<li>若比较函数返回值&#x3D;0，那么a 和 b 相对位置不变；</li>
+<li>若比较函数返回值&gt;0，那么b 排在a 将的前面；</li>
+</ul>
+<ol>
+<li><p><strong>sort排序常见用法:</strong></p>
+<ol>
+<li>数组元素为数字的升序、降序:</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> array =  [<span class="number">10</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>,<span class="number">20</span>,<span class="number">4</span>,<span class="number">25</span>,<span class="number">8</span>];</span><br><span class="line"> <span class="comment">// 升序 a-b &lt; 0   a将排到b的前面，按照a的大小来排序的 </span></span><br><span class="line"> <span class="comment">// 比如被减数a是10，减数是20  10-20 &lt; 0   被减数a(10)在减数b(20)前面   </span></span><br><span class="line"> array.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">   <span class="keyword">return</span> a-b;</span><br><span class="line"> &#125;);</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(array); <span class="comment">// [1,3,4,4,8,10,20,25];</span></span><br><span class="line"> <span class="comment">// 降序 被减数和减数调换了  20-10&gt;0 被减数b(20)在减数a(10)的前面</span></span><br><span class="line"> array.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">   <span class="keyword">return</span> b-a;</span><br><span class="line"> &#125;);</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(array); <span class="comment">// [25,20,10,8,4,4,3,1];</span></span><br></pre></td></tr></table></figure></div></li>
+</ol>
+<p>b. 数组多条件排序</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [&#123;<span class="attr">id</span>:<span class="number">10</span>,<span class="attr">age</span>:<span class="number">2</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">5</span>,<span class="attr">age</span>:<span class="number">4</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">6</span>,<span class="attr">age</span>:<span class="number">10</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">9</span>,<span class="attr">age</span>:<span class="number">6</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">2</span>,<span class="attr">age</span>:<span class="number">8</span>&#125;,&#123;<span class="attr">id</span>:<span class="number">10</span>,<span class="attr">age</span>:<span class="number">9</span>&#125;];</span><br><span class="line">     array.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">         <span class="keyword">if</span>(a.<span class="property">id</span> === b.<span class="property">id</span>)&#123;<span class="comment">// 如果id的值相等，按照age的值降序</span></span><br><span class="line">             <span class="keyword">return</span> b.<span class="property">age</span> - a.<span class="property">age</span></span><br><span class="line">         &#125;<span class="keyword">else</span>&#123; <span class="comment">// 如果id的值不相等，按照id的值升序</span></span><br><span class="line">             <span class="keyword">return</span> a.<span class="property">id</span> - b.<span class="property">id</span></span><br><span class="line">         &#125;</span><br><span class="line">     &#125;)</span><br><span class="line">  <span class="comment">// [&#123;&quot;id&quot;:2,&quot;age&quot;:8&#125;,&#123;&quot;id&quot;:5,&quot;age&quot;:4&#125;,&#123;&quot;id&quot;:6,&quot;age&quot;:10&#125;,&#123;&quot;id&quot;:9,&quot;age&quot;:6&#125;,&#123;&quot;id&quot;:10,&quot;age&quot;:9&#125;,&#123;&quot;id&quot;:10,&quot;age&quot;:2&#125;]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>c. 自定义比较函数,<strong>运用好返回值，我们可以写出任意符合自己需求的比较函数</strong></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> array = [&#123;<span class="attr">name</span>:<span class="string">&#x27;Koro1&#x27;</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">&#x27;Koro1&#x27;</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">&#x27;OB&#x27;</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">&#x27;Koro1&#x27;</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">&#x27;OB&#x27;</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">&#x27;OB&#x27;</span>&#125;];</span><br><span class="line">    array.<span class="title function_">sort</span>(<span class="keyword">function</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a.<span class="property">name</span> === <span class="string">&#x27;Koro1&#x27;</span>)&#123;<span class="comment">// 如果name是&#x27;Koro1&#x27; 返回-1 ，-1&lt;0 a排在b的前面</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123; <span class="comment">// 如果不是的话，a排在b的后面</span></span><br><span class="line">          <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// [&#123;&quot;name&quot;:&quot;Koro1&quot;&#125;,&#123;&quot;name&quot;:&quot;Koro1&quot;&#125;,&#123;&quot;name&quot;:&quot;Koro1&quot;&#125;,&#123;&quot;name&quot;:&quot;OB&quot;&#125;,&#123;&quot;name&quot;:&quot;OB&quot;&#125;,&#123;&quot;name&quot;:&quot;OB&quot;&#125;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="pop-删除一个数组中的最后的一个元素"><a href="#pop-删除一个数组中的最后的一个元素" class="headerlink" title="pop() 删除一个数组中的最后的一个元素"></a><strong>pop() 删除一个数组中的最后的一个元素</strong></h4><p>定义: pop() 方法删除一个数组中的最后的一个元素，并且返回这个元素。</p>
+<p>参数: 无。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span>  a =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    <span class="keyword">let</span> item = a.<span class="title function_">pop</span>();  <span class="comment">// 3</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [1,2]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="shift-删除数组的第一个元素"><a href="#shift-删除数组的第一个元素" class="headerlink" title="shift() 删除数组的第一个元素"></a><strong>shift() 删除数组的第一个元素</strong></h4><p>定义: shift()方法删除数组的第一个元素，并返回这个元素。</p>
+<p>参数: 无。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span>  a =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> item = a.<span class="title function_">shift</span>();  <span class="comment">// 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [2,3]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="push-向数组的末尾添加元素"><a href="#push-向数组的末尾添加元素" class="headerlink" title="push() 向数组的末尾添加元素"></a><strong>push() 向数组的末尾添加元素</strong></h4><p>定义：push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。</p>
+<p>参数: item1, item2, …, itemX ,要添加到数组末尾的元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span>  a =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> item = a.<span class="title function_">push</span>(<span class="string">&#x27;末尾&#x27;</span>);  <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [1,2,3,&#x27;末尾&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="unshift-向数组的开头添加元素"><a href="#unshift-向数组的开头添加元素" class="headerlink" title="unshift() 向数组的开头添加元素"></a><strong>unshift() 向数组的开头添加元素</strong></h4><p>定义：unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。</p>
+<p>参数: item1, item2, …, itemX ,要添加到数组开头的元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span>  a =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> item = a.<span class="title function_">unshift</span>(<span class="string">&#x27;开头&#x27;</span>);  <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [&#x27;开头&#x27;,1,2,3]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="reverse-颠倒数组中元素的顺序"><a href="#reverse-颠倒数组中元素的顺序" class="headerlink" title="reverse() 颠倒数组中元素的顺序"></a><strong>reverse() 颠倒数组中元素的顺序</strong></h4><p>定义: reverse() 方法用于颠倒数组中元素的顺序。</p>
+<p>参数: 无</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span>  a =  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">    a.<span class="title function_">reverse</span>();  </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// [3,2,1]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES6-copyWithin-指定位置的成员复制到其他位置"><a href="#ES6-copyWithin-指定位置的成员复制到其他位置" class="headerlink" title="ES6: copyWithin() 指定位置的成员复制到其他位置"></a><strong>ES6: copyWithin() 指定位置的成员复制到其他位置</strong></h4><p>定义: 在当前数组内部，将指定位置的成员复制到其他位置,并返回这个数组。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">copyWithin</span>(target, start = <span class="number">0</span>, end = <span class="variable language_">this</span>.<span class="property">length</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>三个参数都是数值，如果不是，会自动转为数值.</p>
+<ol>
+<li>target（必需）：从该位置开始替换数据。如果为负值，表示倒数。</li>
+<li>start（可选）：从该位置开始读取数据，默认为 0。如果为负值，表示倒数。</li>
+<li>end（可选）：到该位置前停止读取数据，默认等于数组长度。使用负数可从数组结尾处规定位置。</li>
+</ol>
+<p>浏览器兼容(MDN): chrome 45,Edge 12,Firefox32,Opera 32,Safari 9, IE 不支持</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// -2相当于3号位，-1相当于4号位</span></span><br><span class="line">        [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].<span class="title function_">copyWithin</span>(<span class="number">0</span>, -<span class="number">2</span>, -<span class="number">1</span>)</span><br><span class="line">        <span class="comment">// [4, 2, 3, 4, 5]</span></span><br><span class="line">        <span class="keyword">var</span> a=[<span class="string">&#x27;OB1&#x27;</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="string">&#x27;OB2&#x27;</span>,<span class="string">&#x27;Koro2&#x27;</span>,<span class="string">&#x27;OB3&#x27;</span>,<span class="string">&#x27;Koro3&#x27;</span>,<span class="string">&#x27;OB4&#x27;</span>,<span class="string">&#x27;Koro4&#x27;</span>,<span class="string">&#x27;OB5&#x27;</span>,<span class="string">&#x27;Koro5&#x27;</span>]</span><br><span class="line">        <span class="comment">// 2位置开始被替换,3位置开始读取要替换的 5位置前面停止替换</span></span><br><span class="line">        a.<span class="title function_">copyWithin</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>)</span><br><span class="line">        <span class="comment">// [&quot;OB1&quot;,&quot;Koro1&quot;,&quot;Koro2&quot;,&quot;OB3&quot;,&quot;OB3&quot;,&quot;Koro3&quot;,&quot;OB4&quot;,&quot;Koro4&quot;,&quot;OB5&quot;,&quot;Koro5&quot;]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>从上述栗子:</p>
+<ol>
+<li>第一个参数是开始被替换的元素位置</li>
+<li>要替换数据的位置范围:从第二个参数是开始读取的元素，在第三个参数前面一个元素停止读取</li>
+<li>数组的长度不会改变</li>
+<li><strong>读了几个元素就从开始被替换的地方替换几个元素</strong></li>
+</ol>
+<h4 id="ES6-fill-填充数组"><a href="#ES6-fill-填充数组" class="headerlink" title="ES6: fill() 填充数组"></a><strong>ES6: fill() 填充数组</strong></h4><p>定义: 使用给定值，填充一个数组。</p>
+<p>参数:</p>
+<p>第一个元素(必须): 要填充数组的值</p>
+<p>第二个元素(可选): 填充的开始位置,默认值为0</p>
+<p>第三个元素(可选)：填充的结束位置，默认是为<code>this.length</code></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>].<span class="title function_">fill</span>(<span class="number">7</span>)</span><br><span class="line">    <span class="comment">// [7, 7, 7]</span></span><br><span class="line">    [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>].<span class="title function_">fill</span>(<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="comment">// [&#x27;a&#x27;, 7, &#x27;c&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>title</title>
+    <url>/2022/11/17/new%20Set()/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2022/11/17/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link" href="https://hexo.io/">Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link" href="https://hexo.io/docs/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link" href="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link" href="https://github.com/hexojs/hexo/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
@@ -19,13 +230,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title>title</title>
-    <url>/2022/11/17/title/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>JavaScript中的数据类型</title>
-    <url>/2020/06/20/js%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <url>/2020/07/20/js%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="一、JS中有哪些数据类型"><a href="#一、JS中有哪些数据类型" class="headerlink" title="一、JS中有哪些数据类型"></a>一、JS中有哪些数据类型</h2><p>JS中的数据类型大致分为<strong>基本数据类型</strong>和引用类型</p>
 <p><strong>基本数据类型有</strong>：</p>
 <ul>
@@ -140,13 +346,79 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2022/11/17/test/</url>
+    <title>title</title>
+    <url>/2022/11/17/new%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>第一篇博客</title>
-    <url>/2022/09/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <title>this指向总结</title>
+    <url>/2021/11/17/this%E6%8C%87%E5%90%91/</url>
+    <content><![CDATA[<p>this 指向 &#x3D;&#x3D;&#x3D;&gt; 指向 可以理解为 等于 代表谁</p>
+<p><strong>this在定义的时候不能确定, 只有执行调用的时候才能确定.!!!</strong></p>
+<h4 id="一、默认window"><a href="#一、默认window" class="headerlink" title="一、默认window"></a>一、默认window</h4><p>​	当调用函数的对象位于Window时，函数内的this会默认绑定到Window上</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 全局作用域</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)  <span class="comment">// window</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 普通函数调用</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;大家吃早饭了嘛?&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时器里面</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)  <span class="comment">// window</span></span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>​	但在严格模式下，全局对象Window不能用于默认绑定，this会绑定到undefined</p>
+<h4 id="二、对象上下文-隐式绑定"><a href="#二、对象上下文-隐式绑定" class="headerlink" title="二、对象上下文(隐式绑定)"></a>二、对象上下文(隐式绑定)</h4><p>​	一般通过上下文对象调用函数时，函数内的this绑定到该对象</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  方法调用中, 谁调用这个方法, this指向谁</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;yiyi&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="attr">sayHi</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">sayHi</span>() <span class="comment">//obj</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 事件注册的时候, this指向被绑定的元素</span></span><br><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>)</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// 绑定事件的元素</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>) <span class="comment">// 触发事件的元素</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">currentTarget</span>) <span class="comment">// 同this, 绑定事件的元素</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="三、new绑定"><a href="#三、new绑定" class="headerlink" title="三、new绑定"></a>三、new绑定</h4><p>​	通过构造函数创建实例对象时，this指向这个实例对象</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 构造函数中, this 指向的是 构造函数的实例</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person1 = <span class="keyword">new</span> <span class="title class_">Foo</span>(<span class="string">&#x27;小红&#x27;</span>, <span class="number">19</span>) <span class="comment">//new Foo(&#x27;小红&#x27;, 19)</span></span><br><span class="line"><span class="keyword">const</span> person2 = <span class="keyword">new</span> <span class="title class_">Foo</span>(<span class="string">&#x27;小白&#x27;</span>, <span class="number">18</span>) <span class="comment">//new Foo(&#x27;小白&#x27;, 18)</span></span><br></pre></td></tr></table></figure></div>
+
+<p>​	因为new的执行过程中，会让函数的this指向这个对象</p>
+<h4 id="四、显式绑定"><a href="#四、显式绑定" class="headerlink" title="四、显式绑定"></a>四、显式绑定</h4><p>​	通过call、apply、bind显式调用函数时，函数内的this会绑定到指定参数的对象上</p>
+<h5 id="1-call改变this指向"><a href="#1-call改变this指向" class="headerlink" title="1. call改变this指向"></a>1. call改变this指向</h5><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// call可以改变this的指向</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">msg</span>:<span class="string">&#x27;hello&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> abc = &#123;</span><br><span class="line">    <span class="attr">demo</span>:<span class="string">&#x27;hahaha&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">x, y</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> res = fn.<span class="title function_">call</span>(obj, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res) <span class="comment">//3</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>fn.call()</strong></p>
+<ol>
+<li>改变this的指向</li>
+<li>会调用函数，立即执行，返回函数调用结果</li>
+<li>注意：第一个参数就是要让this指向哪个对象，后面紧跟的是参数列表</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">            <span class="attr">name</span>:<span class="string">&#x27;hw&#x27;</span>,</span><br><span class="line">    <span class="title function_">getName</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj3 = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;iphone&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">obj2.<span class="title function_">getName</span>() <span class="comment">//hw</span></span><br><span class="line">obj2.<span class="property">getName</span>.<span class="title function_">call</span>(obj3)  <span class="comment">//iphone</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h5 id="2-apply改变this指向"><a href="#2-apply改变this指向" class="headerlink" title="2. apply改变this指向"></a>2. apply改变this指向</h5><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">msg</span>: <span class="string">&#x27;hello&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> abc = &#123;</span><br><span class="line">    <span class="attr">demo</span>: <span class="string">&#x27;哈哈哈哈&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>) <span class="comment">// msg: &#x27;hello&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// fn(1, 2)</span></span><br><span class="line"><span class="comment">// fn.apply(this指向谁, [数组])</span></span><br><span class="line"><span class="keyword">const</span> res = fn.<span class="title function_">apply</span>(obj, [<span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>fn.apply()</strong></p>
+<ol>
+<li>改变this的指向</li>
+<li>调用函数，立即执行</li>
+<li>返回值就是函数本身的返回值</li>
+</ol>
+<p><strong>注意：</strong>apply的第二个参数是数组</p>
+<h5 id="3-bind改变this指向"><a href="#3-bind改变this指向" class="headerlink" title="3.bind改变this指向"></a>3.bind改变this指向</h5><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">one</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">let</span> user = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;123&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> two = one.<span class="title function_">bind</span>(user)</span><br><span class="line"><span class="title function_">two</span>() <span class="comment">//age: 18 name: &quot;123&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>fn.bind(obj, 参数列表)</p>
+<ul>
+<li>改变this指向</li>
+<li>有返回值，返回值是一个函数，这个函数里面的this指向的就是bind的第一个参数</li>
+<li>不会立即执行，需要我们手动调用执行</li>
+</ul>
+<h5 id="call-apply-bind的区别"><a href="#call-apply-bind的区别" class="headerlink" title="call apply bind的区别:"></a>call apply bind的区别:</h5><ol>
+<li>三个都可以改变this指向</li>
+<li>call、bind接收的是一个参数列表，apply接收的是一个数组</li>
+<li>call、apply都是立即执行的，bind是返回一个函数，需要手动调用</li>
+</ol>
+<h3 id="五、箭头函数"><a href="#五、箭头函数" class="headerlink" title="五、箭头函数"></a>五、箭头函数</h3><p>箭头函数中，由于箭头函数没有自己的this，它只会从自己作用域链的上一层继承this，而且箭头函数的this不能被改变</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 箭头函数没有prototype，原型</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">A</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br><span class="line"><span class="comment">// 2. 不能使用new调用箭头函数，也就是它不能作为构造函数</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">b</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> c = <span class="keyword">new</span> <span class="title function_">b</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 箭头函数没有arguments对象，可以利用rest接收剩余参数</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">a</span> = (<span class="params">first, ...rest</span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(first,rest)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">a</span>(<span class="number">123</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 箭头函数本身没有this，</span></span><br><span class="line"><span class="comment">// 箭头函数的this在定义的时候就确定了，指向的是上层作用域中的this</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> msg = <span class="string">&#x27;666&#x27;</span>  <span class="comment">// let声明的变量，不会挂载到window上</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">msg</span>:<span class="string">&#x27;xxx&#x27;</span>,</span><br><span class="line">    <span class="attr">say</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;say: &#x27;</span>, <span class="variable language_">this</span>.<span class="property">msg</span>)  <span class="comment">// say: xxx</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">sayHi</span>:<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sayHi: &#x27;</span>, <span class="variable language_">this</span>.<span class="property">msg</span>) <span class="comment">// sayHi: undefined   window.msg</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">say</span>()</span><br><span class="line">obj.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>title</title>
+    <url>/2022/11/17/title/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>变量声明和提升</title>
+    <url>/2020/11/17/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%92%8C%E6%8F%90%E5%8D%87/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -208,5 +480,255 @@
       <tags>
         <tag>css</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>数组的操作方法合集(4）</title>
+    <url>/2021/09/30/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%954/</url>
+    <content><![CDATA[<p><img lazyload src="/images/loading.svg" data-src="/../img/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png" alt="数组的常见操作方法.png"></p>
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组的操作方法合集(3)</title>
+    <url>/2021/09/30/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%953/</url>
+    <content><![CDATA[<h3 id="遍历数组方法-12个"><a href="#遍历数组方法-12个" class="headerlink" title="遍历数组方法(12个):"></a><strong>遍历数组方法(12个):</strong></h3><p>js中遍历数组并不会改变原始数组的方法总共有12个:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">ES5</span>：</span><br><span class="line">    forEach、every 、some、 filter、map、reduce、reduceRight、</span><br><span class="line">    <span class="title class_">ES6</span>：</span><br><span class="line">    find、findIndex、keys、values、entries</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a><strong>forEach</strong></h4><p>定义: 按升序为数组中含有效值的每一项执行一次回调函数。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisValue)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line">    <span class="number">1.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line">    <span class="number">2.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line">    <span class="number">3.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>thisValue(可选): 当执行回调函数时this绑定对象的值，默认值为<code>undefined</code></p>
+<p><strong>关于forEach()你要知道</strong></p>
+<ul>
+<li>无法中途退出循环，只能用<code>return</code>退出本次回调，进行下一次回调。</li>
+<li>它总是返回 undefined值,即使你return了一个值。</li>
+</ul>
+<p><strong>下面类似语法同样适用这些规则</strong></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 对于空数组是不会执行回调函数的</span><br><span class="line"><span class="number">2.</span> 对于已在迭代过程中删除的元素，或者空元素会跳过回调函数</span><br><span class="line"><span class="number">3.</span> 遍历次数再第一次循环前就会确定，再添加到数组中的元素不会被遍历。</span><br><span class="line"><span class="number">4.</span> 如果已经存在的值被改变，则传递给 callback 的值是遍历到他们那一刻的值。</span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, ,<span class="number">3</span>]; <span class="comment">// 最后第二个元素是空的，不会遍历(undefined、null会遍历)</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">&#x27;OBKoro1&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> result = a.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">value, index, array</span>) &#123; </span><br><span class="line">a[<span class="number">3</span>] = <span class="string">&#x27;改变元素&#x27;</span>;</span><br><span class="line">a.<span class="title function_">push</span>(<span class="string">&#x27;添加到尾端，不会被遍历&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(value, <span class="string">&#x27;forEach传递的第一个参数&#x27;</span>); <span class="comment">// 分别打印 1 ,2 ,改变元素</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>); <span class="comment">// OBKoro1 打印三次 this绑定在obj对象上</span></span><br><span class="line"><span class="comment">// break; // break会报错</span></span><br><span class="line"><span class="keyword">return</span> value; <span class="comment">// return只能结束本次回调 会执行下次回调</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;不会执行，因为return 会执行下一次循环回调&#x27;</span>)</span><br><span class="line">    &#125;, obj);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">// 即使return了一个值,也还是返回undefined</span></span><br><span class="line"><span class="comment">// 回调函数也接受接头函数写法</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="every-检测数组所有元素是否都符合判断条件"><a href="#every-检测数组所有元素是否都符合判断条件" class="headerlink" title="every 检测数组所有元素是否都符合判断条件"></a><strong>every 检测数组所有元素是否都符合判断条件</strong></h4><p>定义: 方法用于检测数组所有元素是否都符合函数定义的条件</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">every</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisValue)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:(这几个方法的参数，语法都类似)</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line">    <span class="number">1.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line">    <span class="number">2.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line">    <span class="number">3.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>thisValue(可选): 当执行回调函数时this绑定对象的值，默认值为<code>undefined</code></p>
+<p>方法返回值规则:</p>
+<ol>
+<li>如果数组中检测到<strong>有一个元素不满足，则整个表达式返回 false</strong>，且剩余的元素不会再进行检测。</li>
+<li>如果所有元素<strong>都满足条件，则返回 true</strong>。&#x3D;</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isBigEnough</span>(<span class="params">element, index, array</span>) &#123; </span><br><span class="line">      <span class="keyword">return</span> element &gt;= <span class="number">10</span>; <span class="comment">// 判断数组中的所有元素是否都大于10</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> result = [<span class="number">12</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">130</span>, <span class="number">44</span>].<span class="title function_">every</span>(isBigEnough);   <span class="comment">// false</span></span><br><span class="line">    <span class="keyword">let</span> result = [<span class="number">12</span>, <span class="number">54</span>, <span class="number">18</span>, <span class="number">130</span>, <span class="number">44</span>].<span class="title function_">every</span>(isBigEnough); <span class="comment">// true</span></span><br><span class="line">    <span class="comment">// 接受箭头函数写法 </span></span><br><span class="line">    [<span class="number">12</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">130</span>, <span class="number">44</span>].<span class="title function_">every</span>(<span class="function"><span class="params">x</span> =&gt;</span> x &gt;= <span class="number">10</span>); <span class="comment">// false</span></span><br><span class="line">    [<span class="number">12</span>, <span class="number">54</span>, <span class="number">18</span>, <span class="number">130</span>, <span class="number">44</span>].<span class="title function_">every</span>(<span class="function"><span class="params">x</span> =&gt;</span> x &gt;= <span class="number">10</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="some-数组中的是否有满足判断条件的元素"><a href="#some-数组中的是否有满足判断条件的元素" class="headerlink" title="some 数组中的是否有满足判断条件的元素"></a><strong>some 数组中的是否有满足判断条件的元素</strong></h4><p>定义：数组中的是否有满足判断条件的元素</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">some</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisValue)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:(这几个方法的参数，语法都类似)</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line">    <span class="number">1.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line">    <span class="number">2.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line">    <span class="number">3.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>thisValue(可选): 当执行回调函数时this绑定对象的值，默认值为<code>undefined</code></p>
+<p>方法返回值规则：</p>
+<ol>
+<li>如果<strong>有一个元素满足条件，则表达式返回true</strong>, 剩余的元素不会再执行检测。</li>
+<li>如果<strong>没有满足条件的元素，则返回false</strong>。</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isBigEnough</span>(<span class="params">element, index, array</span>) &#123;</span><br><span class="line">   <span class="keyword">return</span> (element &gt;= <span class="number">10</span>); <span class="comment">//数组中是否有一个元素大于 10</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> result = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>].<span class="title function_">some</span>(isBigEnough); <span class="comment">// false</span></span><br><span class="line"> <span class="keyword">let</span> result = [<span class="number">12</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">4</span>].<span class="title function_">some</span>(isBigEnough); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="filter-过滤原始数组，返回新数组"><a href="#filter-过滤原始数组，返回新数组" class="headerlink" title="filter 过滤原始数组，返回新数组"></a><strong>filter 过滤原始数组，返回新数组</strong></h4><p>定义: 返回一个新数组, 其包含通过所提供函数实现的测试的所有元素。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> new_array = arr.<span class="title function_">filter</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisArg</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:(这几个方法的参数，语法都类似)</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line"><span class="number">1.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line"><span class="number">2.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line"><span class="number">3.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>thisValue(可选):  当执行回调函数时this绑定对象的值，默认值为<code>undefined</code></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>];</span><br><span class="line"><span class="keyword">let</span> result = a.<span class="title function_">filter</span>(<span class="keyword">function</span> (<span class="params">value, index, array</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> value &gt;= <span class="number">18</span>; <span class="comment">// 返回a数组中所有大于18的元素</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result,a);<span class="comment">// [32,33,40] [32,33,16,40]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="map-对数组中的每个元素进行处理，返回新的数组"><a href="#map-对数组中的每个元素进行处理，返回新的数组" class="headerlink" title="map 对数组中的每个元素进行处理，返回新的数组"></a>map 对数组中的每个元素进行处理，返回新的数组</h4><p>定义：创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> new_array = arr.<span class="title function_">map</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisArg)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:(这几个方法的参数，语法都类似)</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line"><span class="number">1.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line"><span class="number">2.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line"><span class="number">3.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>thisValue(可选):  当执行回调函数时this绑定对象的值，默认值为<code>undefined</code></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> result = a.<span class="title function_">map</span>(<span class="keyword">function</span> (<span class="params">value, index, array</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> value + <span class="string">&#x27;新数组的新元素&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result, a);</span><br><span class="line"><span class="comment">// [&quot;1新数组的新元素&quot;,&quot;2新数组的新元素&quot;,&quot;3新数组的新元素&quot;,&quot;4新数组的新元素&quot;] [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="reduce-为数组提供累加器，合并为一个值"><a href="#reduce-为数组提供累加器，合并为一个值" class="headerlink" title="reduce 为数组提供累加器，合并为一个值"></a>reduce 为数组提供累加器，合并为一个值</h4><p>定义：reduce() 方法对累加器和数组中的每个元素（从左到右）应用一个函数，最终合并为一个值。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">reduce</span>(<span class="keyword">function</span>(<span class="params">total, currentValue, currentIndex, arr</span>), initialValue)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line"><span class="number">1.</span> <span class="title function_">total</span>(必须)，初始值, 或者上一次调用回调返回的值</span><br><span class="line"><span class="number">2.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line"><span class="number">3.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line"><span class="number">4.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>initialValue(可选): 指定第一次回调 的第一个参数。</p>
+<p>回调第一次执行时:</p>
+<ul>
+<li>如果 initialValue 在调用 reduce 时被提供，那么第一个 total 将等于 initialValue，此时 currentValue 等于数组中的第一个值；</li>
+<li>如果 initialValue 未被提供，那么 total 等于数组中的第一个值，currentValue 等于数组中的第二个值。此时如果数组为空，那么将抛出 TypeError。</li>
+<li>如果数组仅有一个元素，并且没有提供 initialValue，或提供了 initialValue 但数组为空，那么回调不会被执行，数组的唯一值将被返回。</li>
+</ul>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 数组求和</span></span><br><span class="line"><span class="keyword">let</span> sum = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].<span class="title function_">reduce</span>(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"><span class="comment">// 将二维数组转化为一维 将数组元素展开</span></span><br><span class="line"><span class="keyword">let</span> flattened = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]].<span class="title function_">reduce</span>(</span><br><span class="line">  <span class="function">(<span class="params">a, b</span>) =&gt;</span> a.<span class="title function_">concat</span>(b),</span><br><span class="line">  []</span><br><span class="line">);</span><br><span class="line"> <span class="comment">// [0, 1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="reduceRight-从右至左累加"><a href="#reduceRight-从右至左累加" class="headerlink" title="reduceRight 从右至左累加"></a>reduceRight 从右至左累加</h4><p>这个方法除了与reduce执行方向相反外，其他完全与其一致，请参考上述 reduce 方法介绍。</p>
+<h4 id="ES6：find-amp-findIndex-根据条件找到数组成员"><a href="#ES6：find-amp-findIndex-根据条件找到数组成员" class="headerlink" title="ES6：find()&amp; findIndex() 根据条件找到数组成员"></a>ES6：find()&amp; findIndex() 根据条件找到数组成员</h4><p>find()定义：用于找出第一个符合条件的数组成员，并返回该成员，如果没有符合条件的成员，则返回undefined。</p>
+<p>findIndex()定义：返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。</p>
+<p>这两个方法</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> new_array = arr.<span class="title function_">find</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisArg)</span><br><span class="line"> <span class="keyword">let</span> new_array = arr.<span class="title function_">findIndex</span>(<span class="keyword">function</span>(<span class="params">currentValue, index, arr</span>), thisArg)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:(这几个方法的参数，语法都类似)</p>
+<p>function(必须): 数组中每个元素需要调用的函数。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 回调函数的参数</span></span><br><span class="line"><span class="number">1.</span> <span class="title function_">currentValue</span>(必须),数组当前元素的值</span><br><span class="line"><span class="number">2.</span> <span class="title function_">index</span>(可选), 当前元素的索引值</span><br><span class="line"><span class="number">3.</span> <span class="title function_">arr</span>(可选),数组对象本身</span><br></pre></td></tr></table></figure></div>
+
+<p>thisValue(可选):  当执行回调函数时this绑定对象的值，默认值为<code>undefined</code></p>
+<p>这两个方法都可以识别<code>NaN</code>,弥补了<code>indexOf</code>的不足.</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// find</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>].<span class="title function_">find</span>(<span class="function">(<span class="params">n</span>) =&gt;</span> n &lt; <span class="number">0</span>); <span class="comment">// 返回元素-5</span></span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>,<span class="title class_">NaN</span>].<span class="title function_">find</span>(<span class="function">(<span class="params">n</span>) =&gt;</span> <span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>, n));  <span class="comment">// 返回元素NaN</span></span><br><span class="line"><span class="comment">// findIndex</span></span><br><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>].<span class="title function_">findIndex</span>(<span class="function">(<span class="params">n</span>) =&gt;</span> n &lt; <span class="number">0</span>); <span class="comment">// 返回索引2</span></span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>,<span class="title class_">NaN</span>].<span class="title function_">findIndex</span>(<span class="function">(<span class="params">n</span>) =&gt;</span> <span class="title class_">Object</span>.<span class="title function_">is</span>(<span class="title class_">NaN</span>, n));  <span class="comment">// 返回索引4</span></span><br></pre></td></tr></table></figure></div>
+
+<p>浏览器兼容(MDN):Chrome 45,Firefox 25,Opera 32, Safari 8, Edge yes,</p>
+<h4 id="ES6-keys-amp-values-amp-entries-遍历键名、遍历键值、遍历键名-键值"><a href="#ES6-keys-amp-values-amp-entries-遍历键名、遍历键值、遍历键名-键值" class="headerlink" title="ES6 keys()&amp;values()&amp;entries() 遍历键名、遍历键值、遍历键名+键值"></a>ES6 keys()&amp;values()&amp;entries() 遍历键名、遍历键值、遍历键名+键值</h4><p>定义：三个方法都返回一个新的 Array Iterator 对象，对象根据方法不同包含不同的值。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">keys</span>()</span><br><span class="line">array.<span class="title function_">values</span>()</span><br><span class="line">array.<span class="title function_">entries</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：无。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">of</span> [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>].<span class="title function_">keys</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(index);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> elem <span class="keyword">of</span> [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>].<span class="title function_">values</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &#x27;a&#x27;</span></span><br><span class="line"><span class="comment">// &#x27;b&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, elem] <span class="keyword">of</span> [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>].<span class="title function_">entries</span>()) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(index, elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0 &quot;a&quot;</span></span><br><span class="line"><span class="comment">// 1 &quot;b&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>在<code>for..of</code>中如果遍历中途要退出，可以使用<code>break</code>退出循环。</p>
+<p>如果不使用<code>for...of</code>循环，可以手动调用遍历器对象的next方法，进行遍历:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> letter = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line"><span class="keyword">let</span> entries = letter.<span class="title function_">entries</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(entries.<span class="title function_">next</span>().<span class="property">value</span>); <span class="comment">// [0, &#x27;a&#x27;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(entries.<span class="title function_">next</span>().<span class="property">value</span>); <span class="comment">// [1, &#x27;b&#x27;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(entries.<span class="title function_">next</span>().<span class="property">value</span>); <span class="comment">// [2, &#x27;c&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>entries()浏览器兼容性(MDN):Chrome 38, Firefox 28,Opera 25,Safari 7.1</p>
+<p>keys()浏览器兼容性(MDN):Chrome 38, Firefox 28,Opera 25,Safari 8,</p>
+<p><strong>注意</strong>:目前只有Safari 9支持,，其他浏览器未实现，babel转码器也还未实现</p>
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组的操作方法合集</title>
+    <url>/2022/09/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>数组的操作方法合集(2)</title>
+    <url>/2021/09/20/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%952/</url>
+    <content><![CDATA[<h3 id="不改变原数组的方法-8个"><a href="#不改变原数组的方法-8个" class="headerlink" title="不改变原数组的方法(8个):"></a><strong>不改变原数组的方法(8个):</strong></h3><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">ES5</span>：</span><br><span class="line">    slice、join、toLocateString、toStrigin、cancat、indexOf、lastIndexOf、</span><br><span class="line">    <span class="title class_">ES7</span>：</span><br><span class="line">    includes</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="slice-浅拷贝数组的元素"><a href="#slice-浅拷贝数组的元素" class="headerlink" title="slice() 浅拷贝数组的元素"></a><strong>slice() 浅拷贝数组的元素</strong></h4><p>定义： 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象，且原数组不会被修改。</p>
+<p><strong>注意</strong>：字符串也有一个slice() 方法是用来提取字符串的，不要弄混了。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">slice</span>(begin, end);</span><br></pre></td></tr></table></figure></div>
+
+<p>begin(可选): 索引数值,接受负值，从该索引处开始提取原数组中的元素,默认值为0。</p>
+<p>end(可选):索引数值(不包括),接受负值，在该索引处前结束提取原数组元素，默认值为数组末尾(包括最后一个元素)。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// [&#x27;hello&#x27;]</span></span><br><span class="line">    a[<span class="number">0</span>]=<span class="string">&#x27;改变原数组&#x27;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;hello&#x27;]</span></span><br><span class="line">    b[<span class="number">0</span>]=<span class="string">&#x27;改变拷贝的数组&#x27;</span>;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;改变拷贝的数组&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如上：新数组是浅拷贝的，<strong>元素是简单数据类型，改变之后不会互相干扰</strong></p>
+<p>如果是<strong>复杂数据类型(对象,数组)的话，改变其中一个，另外一个也会改变</strong></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b,a); <span class="comment">// [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]  [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// a[0].name=&#x27;改变原数组&#x27;;</span></span><br><span class="line">    <span class="comment">// console.log(b,a); // [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// b[0].name=&#x27;改变拷贝数组&#x27;,b[0].koro=&#x27;改变拷贝数组&#x27;;</span></span><br><span class="line">    <span class="comment">//  [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="join-数组转字符串"><a href="#join-数组转字符串" class="headerlink" title="join() 数组转字符串"></a><strong>join() 数组转字符串</strong></h4><p>定义: join() 方法用于把数组中的所有元素通过指定的分隔符进行分隔放入一个字符串，返回生成的字符串。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">join</span>(str)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:str(可选): 指定要使用的分隔符，默认使用逗号作为分隔符。</p>
+<blockquote>
+<p>使用join方法或者下文说到的toString方法时，当数组中的元素也是数组或者是对象时会出现什么情况？</p>
+</blockquote>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [[<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="string">&#x27;23&#x27;</span>],<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str1=a.<span class="title function_">join</span>(); <span class="comment">// OBKoro1,23,test</span></span><br><span class="line">    <span class="keyword">let</span> b= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="attr">age</span>:<span class="string">&#x27;23&#x27;</span>&#125;,<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str2 = b.<span class="title function_">join</span>(); <span class="comment">// [object Object],test</span></span><br><span class="line">    <span class="comment">// 对象转字符串推荐JSON.stringify(obj);</span></span><br></pre></td></tr></table></figure></div>
+
+<p>所以，<code>join()/toString()</code>方法在数组元素是数组的时候，会将里面的数组也调用<code>join()/toString()</code>,如果是对象的话，对象会被转为<code>[object Object]</code>字符串。</p>
+<h4 id="toLocaleString-数组转字符串"><a href="#toLocaleString-数组转字符串" class="headerlink" title="toLocaleString() 数组转字符串"></a><strong>toLocaleString() 数组转字符串</strong></h4><p>定义: 返回一个表示数组元素的字符串。该字符串由数组中的每个元素的 toLocaleString() 返回值经调用 join() 方法连接（由逗号隔开）组成。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：无</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;,<span class="number">23</span>,<span class="string">&#x27;abcd&#x27;</span>,<span class="keyword">new</span> <span class="title class_">Date</span>()];</span><br><span class="line"><span class="keyword">let</span> str=a.<span class="title function_">toLocaleString</span>(); <span class="comment">// [object Object],23,abcd,2018/5/28 下午1:52:20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如上述栗子：调用数组的<code>toLocaleString</code>方法，数组中的每个元素都会调用自身的<code>toLocaleString</code>方法，对象调用对象的<code>toLocaleString</code>Date调用Date的<code>toLocaleString</code></p>
+<h4 id="toString-数组转字符串-不推荐"><a href="#toString-数组转字符串-不推荐" class="headerlink" title="toString() 数组转字符串 不推荐"></a><strong>toString() 数组转字符串 不推荐</strong></h4><p>该方法的效果和join方法一样，都是用于数组转字符串的，但是与join方法相比没有优势，也不能自定义字符串的分隔符，因此不推荐使用。</p>
+<h4 id="cancat-合并两个或多个数组"><a href="#cancat-合并两个或多个数组" class="headerlink" title="cancat 合并两个或多个数组"></a><strong>cancat 合并两个或多个数组</strong></h4><p>定义： 方法用于合并两个或多个数组，返回一个新数组。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> newArr =oldArray.<span class="title function_">concat</span>(arrayX,arrayX,......,arrayX)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>arrayX（必须）：该参数可以是具体的值，也可以是数组对象。可以是任意多个。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">    <span class="keyword">let</span> b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line">    <span class="comment">//连接两个数组</span></span><br><span class="line">    <span class="keyword">let</span> newVal=a.<span class="title function_">concat</span>(b); <span class="comment">// [1,2,3,4,5,6]</span></span><br><span class="line">    <span class="comment">// 连接三个数组</span></span><br><span class="line">    <span class="keyword">let</span> c = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">    <span class="keyword">let</span> newVal2 = a.<span class="title function_">concat</span>(b, c); <span class="comment">// [1,2,3,4,5,6,7,8,9]</span></span><br><span class="line">    <span class="comment">// 添加元素</span></span><br><span class="line">    <span class="keyword">let</span> newVal3 = a.<span class="title function_">concat</span>(<span class="string">&#x27;添加元素&#x27;</span>,b, c,<span class="string">&#x27;再加一个&#x27;</span>); </span><br><span class="line">    <span class="comment">// [1,2,3,&quot;添加元素&quot;,4,5,6,7,8,9,&quot;再加一个&quot;]</span></span><br><span class="line">   <span class="comment">// 合并嵌套数组  会浅拷贝嵌套数组</span></span><br><span class="line">   <span class="keyword">let</span> d = [<span class="number">1</span>,<span class="number">2</span> ];</span><br><span class="line">   <span class="keyword">let</span> f = [<span class="number">3</span>,[<span class="number">4</span>]];</span><br><span class="line">   <span class="keyword">let</span> newVal4 = d.<span class="title function_">concat</span>(f); <span class="comment">// [1,2,3,[4]]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES6扩展运算符-合并数组"><a href="#ES6扩展运算符-合并数组" class="headerlink" title="ES6扩展运算符...合并数组"></a><strong>ES6扩展运算符<code>...</code>合并数组</strong></h4><p>因为ES6的语法更简洁易懂，所以现在合并数组我大部分用<code>...</code> 来处理，<code>...</code>运算符可以实现<code>cancat</code>的每个栗子，且更简洁和具有高度自定义数组元素位置的效果。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">let</span> b = [ <span class="number">4</span>,...a, <span class="number">4</span>, <span class="number">4</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">//  [2, 3, 4, 5] [4,2,3,4,5,4,4]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="indexOf-查找数组是否存在某个元素，返回下标"><a href="#indexOf-查找数组是否存在某个元素，返回下标" class="headerlink" title="indexOf() 查找数组是否存在某个元素，返回下标"></a><strong>indexOf() 查找数组是否存在某个元素，返回下标</strong></h4><p>定义: 返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">indexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>searchElement(必须):被查找的元素</p>
+<p>fromIndex(可选):开始查找的位置(不能大于等于数组的长度，返回-1)，接受负值，默认值为0。</p>
+<p>严格相等的搜索:</p>
+<p>数组的indexOf搜索跟字符串的indexOf不一样,数组的indexOf使用严格相等<code>===</code>搜索元素，即<strong>数组元素要完全匹配</strong>才能搜索成功。</p>
+<p><strong>注意</strong>：indexOf()不能识别<code>NaN</code></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;啦啦&#x27;</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">24</span>,<span class="title class_">NaN</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;NaN&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦啦&#x27;</span>)); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure></div>
+
+<p>使用场景：</p>
+<ol>
+<li>数组去重</li>
+<li>根据获取的数组下标执行操作，改变数组中的值等。</li>
+<li>判断是否存在，执行操作。</li>
+</ol>
+<h4 id="lastIndexOf-查找指定元素在数组中的最后一个位置"><a href="#lastIndexOf-查找指定元素在数组中的最后一个位置" class="headerlink" title="lastIndexOf() 查找指定元素在数组中的最后一个位置"></a><strong>lastIndexOf() 查找指定元素在数组中的最后一个位置</strong></h4><p>定义: 方法返回指定元素,在数组中的最后一个的索引，如果不存在则返回 -1。（从数组后面往前查找）</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">arr.<span class="title function_">lastIndexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>searchElement(必须): 被查找的元素</p>
+<p>fromIndex(可选): 逆向查找开始位置，默认值数组的长度-1，即查找整个数组。</p>
+<p>关于fromIndex有三个规则:</p>
+<ol>
+<li>正值。如果该值大于或等于数组的长度，则整个数组会被查找。</li>
+<li>负值。将其视为从数组末尾向前的偏移。(比如-2，从数组最后第二个元素开始往前查找)</li>
+<li>负值。其绝对值大于数组长度，则方法返回 -1，即数组不会被查找。</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="number">4</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="string">&#x27;Koro1&#x27;</span>]; <span class="comment">// 数组长度为10</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,4); // 从下标4开始往前找 返回下标2</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,100); //  大于或数组的长度 查找整个数组 返回9</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,-11); // -1 数组不会被查找</span></span><br><span class="line"> <span class="keyword">let</span> b=a.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;Koro1&#x27;</span>,-<span class="number">9</span>); <span class="comment">// 从第二个元素4往前查找，没有找到 返回-1</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES7-includes-查找数组是否包含某个元素-返回布尔"><a href="#ES7-includes-查找数组是否包含某个元素-返回布尔" class="headerlink" title="ES7 includes() 查找数组是否包含某个元素 返回布尔"></a><strong>ES7 includes() 查找数组是否包含某个元素 返回布尔</strong></h4><p>定义： 返回一个布尔值，表示某个数组是否包含给定的值</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">includes</span>(searchElement,fromIndex=<span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>searchElement(必须):被查找的元素</p>
+<p>fromIndex(可选):默认值为0，参数表示搜索的起始位置，接受负值。正值超过数组长度，数组不会被搜索，返回false。负值绝对值超过长数组度，重置从0开始搜索。</p>
+<p><strong>includes方法是为了弥补indexOf方法的缺陷而出现的:</strong></p>
+<ol>
+<li>indexOf方法不能识别<code>NaN</code></li>
+<li>indexOf方法检查是否包含某个值不够语义化，需要判断是否不等于<code>1</code>，表达不够直观</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="title class_">NaN</span>];</span><br><span class="line">    <span class="comment">// let b=a.includes(NaN); // true 识别NaN</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,100); // false 超过数组长度 不搜索</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-3);  // true 从倒数第三个元素开始搜索 </span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-100);  // true 负值绝对值超过数组长度，搜索整个数组</span></span><br></pre></td></tr></table></figure></div>
+
+<p>兼容性(MDN): chrome47, Firefox 43,Edge 14,Opera 34, Safari 9,IE 未实现。</p>
+]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>title</title>
+    <url>/2022/11/17/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
