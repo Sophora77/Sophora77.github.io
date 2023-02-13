@@ -85,6 +85,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2022/11/17/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a class="link" href="https://hexo.io/">Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link" href="https://hexo.io/docs/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link" href="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link" href="https://github.com/hexojs/hexo/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
+
+<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>数组的操作方法合集(1)</title>
     <url>/2021/09/10/flex%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h2 id="创建一个数组"><a href="#创建一个数组" class="headerlink" title="创建一个数组"></a>创建一个数组</h2><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 字面量方式:</span></span><br><span class="line"><span class="comment">// 这个方法也是我们最常用的，在初始化数组的时候 相当方便</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>];  <span class="comment">// [3,11,8];</span></span><br><span class="line"><span class="comment">// 构造器:</span></span><br><span class="line"><span class="comment">// 实际上 new Array === Array,加不加new 一点影响都没有。</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">Array</span>(); <span class="comment">// [] </span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">Array</span>(<span class="number">3</span>); <span class="comment">// [,,] </span></span><br><span class="line"><span class="keyword">var</span> a = <span class="title class_">Array</span>(<span class="number">3</span>,<span class="number">11</span>,<span class="number">8</span>); <span class="comment">// [ 3,11,8 ]</span></span><br></pre></td></tr></table></figure></div>
@@ -205,24 +223,6 @@
       <tags>
         <tag>js</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/11/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a class="link" href="https://hexo.io/">Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link" href="https://hexo.io/docs/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link" href="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link" href="https://github.com/hexojs/hexo/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link" href="https://hexo.io/docs/writing.html">Writing<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link" href="https://hexo.io/docs/server.html">Server<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link" href="https://hexo.io/docs/generating.html">Generating<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
   </entry>
   <entry>
     <title>JavaScript中的数据类型</title>
@@ -474,6 +474,42 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>函数参数</title>
+    <url>/2020/12/09/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="argunments-对象"><a href="#argunments-对象" class="headerlink" title="argunments 对象"></a>argunments 对象</h3><ol>
+<li><p>除箭头函数以外，所有的函数都内置了（默认就存在，自带的）一个arguments对象</p>
+</li>
+<li><p>arguments 伪&#x2F;类数组 有length，有索引，没有push，pop等数组方法&#x3D;&#x3D;&#x3D;&gt; 接收了&#x2F;存储了我们传递过来的传参</p>
+</li>
+<li><p>arguments 对象，只存在于函数中</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getSum</span>(<span class="params">a,b</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">            <span class="comment">// console.log(argunments)</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; argunments.<span class="property">length</span>; i++)&#123;</span><br><span class="line">                sum += <span class="variable language_">arguments</span>[i]</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">return</span> sum</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">// const res = getSum(2,3)</span></span><br><span class="line">        <span class="keyword">const</span> res = <span class="title function_">getSum</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 箭头函数没有arguments</span></span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt;&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="剩余参数-rest"><a href="#剩余参数-rest" class="headerlink" title="剩余参数 rest"></a>剩余参数 rest</h3><p>形式 …变量名 变量名自定义</p>
+<ol>
+<li>剩余参数rest 是一个真数组，存了剩余的实参</li>
+<li>只能放到参数的最后一位</li>
+</ol>
+<h3 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h3><p>扩展运算符（spread）是三个点（…)</p>
+<p>它好比rest 参数的逆运算</p>
+<p>作用： 它不会改变原数组</p>
+<p><strong>主要引用</strong></p>
+<h4 id="1-求一个数组的最大最小值"><a href="#1-求一个数组的最大最小值" class="headerlink" title="1. 求一个数组的最大最小值"></a>1. 求一个数组的最大最小值</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">11</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">77</span>]</span><br><span class="line">        <span class="comment">// Math.max() 它本身接收的是参数列表</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">max</span>(...arr2))</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">min</span>(...arr2))</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="2-复制-x2F-拷贝数组-浅拷贝"><a href="#2-复制-x2F-拷贝数组-浅拷贝" class="headerlink" title="2. 复制&#x2F;拷贝数组 (浅拷贝)"></a>2. 复制&#x2F;拷贝数组 (浅拷贝)</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a1 = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">const</span> a2 = a1</span><br><span class="line">        <span class="comment">// 赋值，数组的直接赋值，赋的是地址，指向的是堆内存中同一个数组对象</span></span><br><span class="line">        a2[<span class="number">0</span>] === <span class="number">666</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a1)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a3 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">        <span class="keyword">const</span> a4 = [...a3] <span class="comment">// ==&gt;[5,6,7]</span></span><br><span class="line">        a3[<span class="number">0</span>] = <span class="number">9</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a3) <span class="comment">//[5,6,7]</span></span><br><span class="line">        <span class="comment">// ==&gt; 数组里面的元素是基本数据类型，修改数组元素的值，相互不影响</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-合并数组-浅拷贝"><a href="#3-合并数组-浅拷贝" class="headerlink" title="3.合并数组 (浅拷贝)"></a>3.合并数组 (浅拷贝)</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a5 = [<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]</span><br><span class="line">        <span class="keyword">const</span> a6 = [<span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ES5 的合并 concat</span></span><br><span class="line">        <span class="keyword">const</span> resArr = a5.<span class="title function_">concat</span>(a6)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resArr)</span><br><span class="line">        <span class="comment">// ES6 ...</span></span><br><span class="line">        <span class="keyword">const</span> a7 = [...a5, ...a6]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a7)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-将字符串转为数组"><a href="#4-将字符串转为数组" class="headerlink" title="4.将字符串转为数组"></a>4.将字符串转为数组</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// [...str] ===&gt; 将字符串展开为数组</span></span><br><span class="line">        <span class="keyword">const</span> str = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">        <span class="keyword">const</span> a8 = [...<span class="string">&#x27;hello&#x27;</span>]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a8)</span><br><span class="line">        <span class="comment">// 反转字符串</span></span><br><span class="line">        <span class="keyword">const</span> res = str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ==&gt; 扩展运算符的方式</span></span><br><span class="line">        <span class="keyword">const</span> resStr = [...str].<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// ===&gt; 推荐</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resStr)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="5-把伪数组转为真数组"><a href="#5-把伪数组转为真数组" class="headerlink" title="5.把伪数组转为真数组"></a>5.把伪数组转为真数组</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> divs = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(divs)</span><br><span class="line">        <span class="comment">// divs.push(666) 伪数组报错</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> resDiv = [...divs]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resDiv)</span><br><span class="line">        resDiv.<span class="title function_">push</span>(<span class="number">666</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resDiv)</span><br><span class="line"></span><br><span class="line"><span class="comment">//将伪数组转为真数组</span></span><br><span class="line"><span class="comment">//[...likeArr] 使用扩展运算符</span></span><br><span class="line"><span class="comment">//Array.from(likeArr)</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+  </entry>
+  <entry>
     <title>作用域</title>
     <url>/2021/02/25/%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
     <content><![CDATA[<p>​	变量和函数的可访问范围 ，就是作用域控制着变量和函数的可见性 和 生命周期</p>
@@ -535,42 +571,6 @@
 <li>如果不存在，往上层作用域中查找变量，直到全局作用域</li>
 </ol>
 <div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 全局作用域</span></span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">3</span></span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span></span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="comment">// 局部作用域</span></span><br><span class="line">            <span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line">            <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;</span><br><span class="line">                <span class="comment">// 局部作用域</span></span><br><span class="line">                a = <span class="number">2</span></span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="title function_">g</span>() <span class="comment">// 调用g</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">f</span>() <span class="comment">// 调用f</span></span><br></pre></td></tr></table></figure></div>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>函数参数</title>
-    <url>/2020/12/09/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="argunments-对象"><a href="#argunments-对象" class="headerlink" title="argunments 对象"></a>argunments 对象</h3><ol>
-<li><p>除箭头函数以外，所有的函数都内置了（默认就存在，自带的）一个arguments对象</p>
-</li>
-<li><p>arguments 伪&#x2F;类数组 有length，有索引，没有push，pop等数组方法&#x3D;&#x3D;&#x3D;&gt; 接收了&#x2F;存储了我们传递过来的传参</p>
-</li>
-<li><p>arguments 对象，只存在于函数中</p>
-</li>
-</ol>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getSum</span>(<span class="params">a,b</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">            <span class="comment">// console.log(argunments)</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; argunments.<span class="property">length</span>; i++)&#123;</span><br><span class="line">                sum += <span class="variable language_">arguments</span>[i]</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">return</span> sum</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">// const res = getSum(2,3)</span></span><br><span class="line">        <span class="keyword">const</span> res = <span class="title function_">getSum</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 箭头函数没有arguments</span></span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt;&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="剩余参数-rest"><a href="#剩余参数-rest" class="headerlink" title="剩余参数 rest"></a>剩余参数 rest</h3><p>形式 …变量名 变量名自定义</p>
-<ol>
-<li>剩余参数rest 是一个真数组，存了剩余的实参</li>
-<li>只能放到参数的最后一位</li>
-</ol>
-<h3 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h3><p>扩展运算符（spread）是三个点（…)</p>
-<p>它好比rest 参数的逆运算</p>
-<p>作用： 它不会改变原数组</p>
-<p><strong>主要引用</strong></p>
-<h4 id="1-求一个数组的最大最小值"><a href="#1-求一个数组的最大最小值" class="headerlink" title="1. 求一个数组的最大最小值"></a>1. 求一个数组的最大最小值</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">11</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">77</span>]</span><br><span class="line">        <span class="comment">// Math.max() 它本身接收的是参数列表</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">max</span>(...arr2))</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">min</span>(...arr2))</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="2-复制-x2F-拷贝数组-浅拷贝"><a href="#2-复制-x2F-拷贝数组-浅拷贝" class="headerlink" title="2. 复制&#x2F;拷贝数组 (浅拷贝)"></a>2. 复制&#x2F;拷贝数组 (浅拷贝)</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a1 = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">const</span> a2 = a1</span><br><span class="line">        <span class="comment">// 赋值，数组的直接赋值，赋的是地址，指向的是堆内存中同一个数组对象</span></span><br><span class="line">        a2[<span class="number">0</span>] === <span class="number">666</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a1)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a3 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">        <span class="keyword">const</span> a4 = [...a3] <span class="comment">// ==&gt;[5,6,7]</span></span><br><span class="line">        a3[<span class="number">0</span>] = <span class="number">9</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a3) <span class="comment">//[5,6,7]</span></span><br><span class="line">        <span class="comment">// ==&gt; 数组里面的元素是基本数据类型，修改数组元素的值，相互不影响</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-合并数组-浅拷贝"><a href="#3-合并数组-浅拷贝" class="headerlink" title="3.合并数组 (浅拷贝)"></a>3.合并数组 (浅拷贝)</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a5 = [<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]</span><br><span class="line">        <span class="keyword">const</span> a6 = [<span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ES5 的合并 concat</span></span><br><span class="line">        <span class="keyword">const</span> resArr = a5.<span class="title function_">concat</span>(a6)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resArr)</span><br><span class="line">        <span class="comment">// ES6 ...</span></span><br><span class="line">        <span class="keyword">const</span> a7 = [...a5, ...a6]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a7)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-将字符串转为数组"><a href="#4-将字符串转为数组" class="headerlink" title="4.将字符串转为数组"></a>4.将字符串转为数组</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// [...str] ===&gt; 将字符串展开为数组</span></span><br><span class="line">        <span class="keyword">const</span> str = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">        <span class="keyword">const</span> a8 = [...<span class="string">&#x27;hello&#x27;</span>]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a8)</span><br><span class="line">        <span class="comment">// 反转字符串</span></span><br><span class="line">        <span class="keyword">const</span> res = str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ==&gt; 扩展运算符的方式</span></span><br><span class="line">        <span class="keyword">const</span> resStr = [...str].<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// ===&gt; 推荐</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resStr)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="5-把伪数组转为真数组"><a href="#5-把伪数组转为真数组" class="headerlink" title="5.把伪数组转为真数组"></a>5.把伪数组转为真数组</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> divs = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(divs)</span><br><span class="line">        <span class="comment">// divs.push(666) 伪数组报错</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> resDiv = [...divs]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resDiv)</span><br><span class="line">        resDiv.<span class="title function_">push</span>(<span class="number">666</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resDiv)</span><br><span class="line"></span><br><span class="line"><span class="comment">//将伪数组转为真数组</span></span><br><span class="line"><span class="comment">//[...likeArr] 使用扩展运算符</span></span><br><span class="line"><span class="comment">//Array.from(likeArr)</span></span><br></pre></td></tr></table></figure></div>
 
 ]]></content>
   </entry>
@@ -1200,13 +1200,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>继承</title>
-    <url>/2022/11/17/%E7%BB%A7%E6%89%BF/</url>
+    <title>闭包</title>
+    <url>/2020/01/17/%E9%97%AD%E5%8C%85/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>闭包</title>
-    <url>/2020/01/17/%E9%97%AD%E5%8C%85/</url>
+    <title>继承</title>
+    <url>/2022/11/17/%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
