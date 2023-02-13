@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="小刘同学">
+    
+    <title>
+        
+            解释一下原型和原型链 |
+        
+        这是一个博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/77.svg">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/css/fontawesome.min.css">
+    <link href="/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/regular.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/v5-font-face.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/duotone.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/brands.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/solid.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
+    <script src="//evan.beee.top/js/waline.js"></script>
+    <link href='/css/css2.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avater.jpg","favicon":"/images/77.svg","article_img_align":"center","left_side_width":"240px","content_max_width":"960px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/wallheaven-bg.webp","description":"小刘同学的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.3.2"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                这是一个博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">解释一下原型和原型链</h1></span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avater.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">小刘同学</span>
+                        
+                            <span class="author-label">77</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-duotone fa-pen-line"></i>&nbsp;
+        <span class="pc">2021-12-11 13:06:26</span>
+        <span class="mobile">2021-12-11 13:06</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a>原型prototype</h3><p>原型：字面意思 原来的模型， 原始祖先， 原始的模型</p>
+<p>JS原型 ： 原型就是一个对象，也叫原型对象</p>
+<ol>
+<li>所有的函数，都有一个prototype属性（显示原型），这个属性是一个指针，指向原型对象。（原型）</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(<span class="title class_">Person</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>原型上默认有一个叫做constructor的属性，指向这个构造函数本身</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person.prototype ==&gt; &#123;</span></span><br><span class="line"><span class="comment">//     constructor: Person</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> === <span class="title class_">Person</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>我们可以往这个原型对象中添加属性和方法</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sing</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hahaha&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">demo</span> = <span class="string">&#x27;我是原型上的一个属性&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(<span class="title class_">Person</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Star</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="comment">// 公共的属性写到构造函数上面</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 公共的方法写到原型对象上  节约了内存</span></span><br><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sing</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">cheer</span> = <span class="string">&#x27;Day Day up&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="4">
+<li>所有通过构造函数创建的对象，都共享原型上的属性和方法！</li>
+</ol>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="variable">ldh</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;刘德华&#x27;</span>, <span class="number">20</span>)</span><br><span class="line"><span class="type">const</span> <span class="variable">zxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;张学友&#x27;</span>, <span class="number">21</span>)</span><br><span class="line"></span><br><span class="line">ldh.sing()</span><br><span class="line">zxy.sing()</span><br><span class="line">console.log(ldh.cheer)</span><br><span class="line">console.log(zxy.cheer)</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(ldh, zxy)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ldh.__proto__ === Star.prototype</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="构造函数中的原型方法"><a href="#构造函数中的原型方法" class="headerlink" title="构造函数中的原型方法"></a>构造函数中的原型方法</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">let</span> <span class="variable">that</span> <span class="operator">=</span> <span class="literal">null</span>  <span class="comment">// 全局变量</span></span><br><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    console.log(<span class="built_in">this</span>)   <span class="comment">// 指向的是实例 Star &#123;name: &#x27;团团&#x27;, age: 7&#125;</span></span><br><span class="line">    that = <span class="built_in">this</span> <span class="comment">// that把this的指向/状态 保存起来了 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>​	我们声明了一个全局变量that，在调用new的时候，保存this的状态， 调用结束后，<br>​	如果that还是指向构造函数创建的实例，说明我们的结论没问题</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that1 = <span class="literal">null</span></span><br><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sing</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)   <span class="comment">// Star &#123;name: &#x27;团团&#x27;, age: 7&#125;</span></span><br><span class="line">    that1 = <span class="variable language_">this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>构造函数里面的this指向的是实例</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tt = <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>原型方法中的this指向的还是实例</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tt.<span class="title function_">sing</span>()   <span class="comment">// 调用之后才能执行，才能看this指向</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="constructor属性"><a href="#constructor属性" class="headerlink" title="constructor属性"></a>constructor属性</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// constructor</span></span><br><span class="line">console.dir(Star)</span><br></pre></td></tr></table></figure></div>
+
+<p>​	首先，constructor在原型（对象）上，每个原型（对象）上默认都有一个constructor属性，指向构造函数本身，表示我，我这个原型，是哪个构造函数的原型 和哪个构造函数相关联，&#x3D;&#x3D;&gt; 其实就相当于是一个标识</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> === <span class="title class_">Star</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有对象的隐式原型都指向构造函数的显示原型</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(tt.<span class="property">__proto__</span> === <span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>)    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tt.__proto__ ==&gt; 指向的也是原型对象，找到的</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(tt.<span class="property">__proto__</span>.<span class="property">constructor</span> === <span class="title class_">Star</span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="constructor的应用"><a href="#constructor的应用" class="headerlink" title="constructor的应用"></a>constructor的应用</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每个原型对象中都有一个constructor属性，指回构造函数本身</span></span><br><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1. 这种方式给原型添加公共方法，不会修改原型</span></span><br><span class="line"><span class="comment">// Star.prototype.sing = function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;sing&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// Star.prototype.dance = function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;dance&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// Star.prototype.rap = function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;rap&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如果直接给Star.prototype赋值一个对象，这个时候，原型上的默认属性constructor就会丢失我们可以手动给这个对象添加constructor属性，指回这个构造函数</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 这种以对象赋值的方式，会覆盖掉原型。 需要我们手动添加一个constructor属性</span></span><br><span class="line">Star.prototype = &#123;</span><br><span class="line">    constructor: Star,</span><br><span class="line">    sing:function()&#123;</span><br><span class="line">        console.log(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    dance:function()&#123;</span><br><span class="line">        console.log(<span class="string">&#x27;dance&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    rap:function()&#123;</span><br><span class="line">        console.log(<span class="string">&#x27;rap&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br><span class="line">tt.__proto__ === Star.prototype  <span class="comment">// ==&gt; 原型对象</span></span><br><span class="line">console.log(ldh)</span><br><span class="line">tt.sing()</span><br><span class="line">tt.dance()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="隐式属性"><a href="#隐式属性" class="headerlink" title="隐式属性"></a>隐式属性</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line">Star.prototype.sing = function()&#123;</span><br><span class="line">    console.log(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>所有对象，都有一个__proto__属性（隐式原型），属性值也是一个对象（其实就是指向原型对象）</li>
+<li>__proto__隐式原型</li>
+</ol>
+<p>&#x3D;&#x3D;&gt; 实例通过__proto__访问(链接)到了它的原型对象</p>
+<p>&#x3D;&#x3D;&gt; __proto__相当于一个桥梁，链接，实例就通过__proto__访问到原型对象</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2. 对象的隐式原型指向构造函数的显示原型</span></span><br><span class="line">tt.__proto__ === Star.prototype <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">function <span class="title function_">Animal</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.color = <span class="string">&#x27;orange&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">cat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Animal</span>()</span><br><span class="line">console.log(cat)</span><br><span class="line"></span><br><span class="line">console.log(cat.__proto__ === Animal.prototype)     <span class="comment">// true</span></span><br><span class="line">console.log(Animal.prototype.constructor === Animal)    <span class="comment">//true</span></span><br><span class="line">console.log(cat.__proto__.constructor === Animal)   <span class="comment">//true</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li><p>实例对象.<strong>proto</strong> &#x3D;&#x3D;&#x3D; 构造函数.prototype’ &#x3D;&#x3D;&gt; 原型</p>
+</li>
+<li><p><strong>proto</strong> 表示了实例和原型之间的一个关系，相当于就是一个桥梁，实例通过它访问原型</p>
+</li>
+</ol>
+<h3 id="构造函数-实例-原型的关系"><a href="#构造函数-实例-原型的关系" class="headerlink" title="构造函数-实例-原型的关系"></a>构造函数-实例-原型的关系</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">Person</span><span class="params">(name)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>四条线：</p>
+<ol>
+<li>构造函数.prototype &#x3D;&#x3D;&#x3D;&gt; 原型对象</li>
+<li>原型对象.constructor &#x3D;&#x3D;&#x3D;&gt; 构造函数</li>
+<li>实例对象.<strong>proto</strong> &#x3D;&#x3D;&#x3D;&gt; 原型对象</li>
+<li>构造函数 new , 创建出 实例对象</li>
+</ol>
+<p>高程四 第八章 P250 : 实例与构造函数原型之间有直接的联系（<strong>proto</strong>），但实例与构造函数之间没有直接联系</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213204512399.png" alt="image-20230213204512399"></p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">Person</span><span class="params">(name)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"></span><br><span class="line">console.log(person.__proto__)   <span class="comment">// ===&gt; person这个实例对象的原型</span></span><br><span class="line">console.log(Person.prototype)   <span class="comment">// ===&gt; Person构造函数的原型</span></span><br><span class="line"></span><br><span class="line">person.__proto__ === Person.prototype</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原型链：</span></span><br><span class="line"><span class="comment">// ==&gt;所有的对象都有一个__proto__，属性值也是一个对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. Person.prototype也是一个对象，所以，它也有__proto__属性，属性值也是对象。</span></span><br><span class="line"><span class="comment">// console.dir(Person)</span></span><br><span class="line">console.log(Person.prototype.__proto__)  <span class="comment">// ===&gt; __proto__ 访问到原型</span></span><br><span class="line"><span class="comment">// Person.prototype.__proto__ ===&gt; &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==&gt; 原型上默认有一个constructor属性，指回的构造函数(我们通过这个知道了Person.prototype的构造函数是Object)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==&gt; 规则4 所有对象的隐式原型指向它的构造函数的显示原型</span></span><br><span class="line"><span class="comment">// Person.prototype</span></span><br><span class="line">Person.prototype.__proto__ === Object.prototype</span><br><span class="line"><span class="comment">// person.__proto__ === Person.prototype</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Person.prototype.__proto__</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ===&gt; Person.prototype 这个原型对象 是 Object这个构造函数创建的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Object  它是一个构造函数</span></span><br><span class="line"><span class="comment">// Object.prototype ===&gt; 得到的也是一个原型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.prototype这个原型上默认有一个constructor属性，指向构造函数本身</span></span><br><span class="line">Object.prototype.constructor === Object</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.prototype                ===&gt; 原型</span></span><br><span class="line"><span class="comment">// Person.prototype.__proto__      ===&gt; 原型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 也就是，上面这两个 指向的 都是 Object这个构造函数的原型</span></span><br><span class="line">console.log(Person.prototype.__proto__ === Object.prototype)    <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<p>我们说的原型,可以说是构造函数的原型,也可以说实例的原型,指的都是同一个</p>
+<p>构造函数 通过 prototype 访问到它的原型</p>
+<p>实例   通过 <strong>proto</strong> 访问到它的原型</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 3. Object.prototype</span></span><br><span class="line"><span class="comment">// Object.prototype它也是一个原型对象，所以，它也有一个__proto__属性</span></span><br><span class="line">console.log(Object.prototype)</span><br><span class="line">console.log(Object.prototype.__proto__ === <span class="literal">null</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>正常的原型链终止到Object.prototype, 也就是Object.prototype.<strong>proto</strong> &#x3D;&#x3D;&#x3D; null</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="什么是原型？"><a href="#什么是原型？" class="headerlink" title="什么是原型？"></a>什么是原型？</h4><ol>
+<li>原型就是一个对象</li>
+<li>.每个函数都有prototype属性，它的值是一个指针（地址），指向的就是原型对象</li>
+<li>通过构造函数创建的实例，都有一个__proto__属性，也指向原型对象</li>
+<li>原型上默认有个constructor属性，指回构造函数</li>
+<li>我们可以把一些公共的属性和方法放到原型上，节约内存</li>
+<li>所有通过构造函数创建的实例都共享原型上的属性和方法</li>
+</ol>
+<h4 id="什么是原型链？"><a href="#什么是原型链？" class="headerlink" title="什么是原型链？"></a>什么是原型链？</h4><ol>
+<li>每个对象通过__proto__属性都能访问到它的原型（对象），原型对象也有它的原型对象（原型也有它的原型）</li>
+<li>当访问一个对象属性或方法的时候，先在自身中寻找</li>
+<li>如果没有，就会沿着__proto__这条链向上查找，知道最顶层Object.prototype为止</li>
+</ol>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/04/15/new%20Set()/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">new Set()</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/11/17/this%E6%8C%87%E5%90%91/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">this指向总结</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">小刘同学</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.3.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-duotone fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list-tree"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8Bprototype"><span class="nav-text">原型prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-text">构造函数中的原型方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor%E5%B1%9E%E6%80%A7"><span class="nav-text">constructor属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#constructor%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">constructor的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E5%B1%9E%E6%80%A7"><span class="nav-text">隐式属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E5%AE%9E%E4%BE%8B-%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">构造函数-实例-原型的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B%EF%BC%9F"><span class="nav-text">什么是原型？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E5%9E%8B%E9%93%BE%EF%BC%9F"><span class="nav-text">什么是原型链？</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/header-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/back2top.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/local-search.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/code-copy.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/left-side-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="小刘同学">
+    
+    <title>
+        
+            深拷贝/浅拷贝 |
+        
+        这是一个博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/77.svg">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/css/fontawesome.min.css">
+    <link href="/css/fontawesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/regular.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/v5-font-face.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/duotone.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/brands.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/solid.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//evan.beee.top/css/waline.css"/>
+    <script src="//evan.beee.top/js/waline.js"></script>
+    <link href='/css/css2.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"example.com","root":"/","language":"en","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/images/avater.jpg","favicon":"/images/77.svg","article_img_align":"center","left_side_width":"240px","content_max_width":"960px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_img":"/images/wallheaven-bg.webp","description":"小刘同学的博客"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"0.3.2"};
+    REDEFINE.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+    
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                这是一个博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">深拷贝/浅拷贝</h1></span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avater.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">小刘同学</span>
+                        
+                            <span class="author-label">77</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-duotone fa-pen-line"></i>&nbsp;
+        <span class="pc">2021-03-10 18:56:56</span>
+        <span class="mobile">2021-03-10 18:56</span>
+    </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h4><p>赋值：将某一个数值或对象赋给某个变量的过程</p>
+<ul>
+<li><p>基本数据类型：值传递，赋值之后两个变量互不影响</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195557503.png" alt="image-20230213195557503"></p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;大家早上吃饭了吗&#x27;</span></span><br><span class="line"><span class="keyword">let</span> b = a</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>引用数据类型：赋值（地址），两个变量具有相同的引用，指向同一个对象，相互之间有影响</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195605580.png" alt="image-20230213195605580"></p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;你不知道的JavaScript 上&#x27;</span>,</span><br><span class="line">    <span class="attr">book</span>:&#123;</span><br><span class="line">        <span class="attr">price</span>:<span class="string">&#x27;300$&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj</span><br><span class="line"></span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&#x27;hhh&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="property">name</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>赋值不是浅拷贝，没有堆内存中新创建一个对象</strong></p>
+<h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><ul>
+<li><p><strong>定义</strong>：</p>
+<ol>
+<li><strong>在堆内存中新开辟一个内存空间，创建一个新对象</strong></li>
+<li><strong>新对象只包含被拷贝对象第一层基本数据类型和引用类型的地址</strong></li>
+</ol>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195612037.png" alt="image-20230213195612037"></p>
+</li>
+<li><p><strong>注意</strong>：</p>
+<ol>
+<li>第一层如果是基本数据类型，那么前后两个对象的属性互不影响</li>
+<li>第一层如果是引用类型，引用值改变，会相互影响</li>
+</ol>
+</li>
+<li><p><strong>浅拷贝方式</strong>：</p>
+<ol>
+<li><strong>Object.assign(target,source)</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj2 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, obj1)</span><br><span class="line"><span class="comment">// 第一层，属性值如果是基本数据类型，拷贝前后的两个对象的这个属性互不影响</span></span><br><span class="line">obj2.<span class="property">name</span> = <span class="string">&#x27;java&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>)    <span class="comment">// 基本数据类型判断全等 值和类型</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">book</span> === obj2.<span class="property">book</span>)    <span class="comment">// 引用类型，看地址是否一样</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一层，属性值如果是引用类型，引用类型的值会改变，会相互影响</span></span><br><span class="line">obj1.<span class="property">book</span>.<span class="property">price</span> = <span class="number">56</span></span><br><span class="line"><span class="comment">// console.log(obj2)</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="2">
+<li><strong>对象拓展运算符</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj3 = &#123; ...obj &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3)</span><br><span class="line">obj3.<span class="property">name</span> = <span class="string">&#x27;test&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line">obj3.<span class="property">book</span>.<span class="property">price</span> = <span class="number">222</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">book</span>.<span class="property">price</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="3">
+<li><strong>Array.prototype.contact()</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, &#123; <span class="attr">user</span>: <span class="string">&#x27;杰伦&#x27;</span> &#125;]</span><br><span class="line"><span class="keyword">const</span> arr2 = arr1.<span class="title function_">concat</span>()</span><br><span class="line"><span class="comment">// console.log(arr2)</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">666</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2)</span><br><span class="line">arr[<span class="number">2</span>].<span class="property">user</span> = <span class="string">&#x27;磊磊&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="4">
+<li><strong>Array.prototype.slice()</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, &#123; <span class="attr">user</span>: <span class="string">&#x27;杰伦&#x27;</span> &#125;]</span><br><span class="line"><span class="keyword">const</span> arr4 = arr3.<span class="title function_">slice</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr3)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr4)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><ul>
+<li><p><strong>定义：</strong></p>
+<ol>
+<li><strong>在堆内存中开辟一个新的空间存新的对象</strong></li>
+<li><strong>递归的拷贝原对象的属性和方法，拷贝前后的两个对象，互不影响</strong></li>
+</ol>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195625187.png" alt="image-20230213195625187"></p>
+</li>
+<li><p><strong>深拷贝方式：</strong></p>
+<ol>
+<li><p><strong>递归函数</strong></p>
+<p>一层一层的，每一层都新创建一个内存空间</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;JS&#x27;</span>,</span><br><span class="line">    <span class="attr">book</span>: &#123;</span><br><span class="line">        <span class="attr">title</span>: <span class="string">&quot;you don&#x27;t know JS&quot;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="string">&#x27;300$&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a1 = &#123; <span class="attr">b</span>: &#123; <span class="attr">c</span>: &#123;&#125; &#125; &#125;</span><br><span class="line"><span class="keyword">let</span> a2 = &#123; ...a1 &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a1.<span class="property">b</span>.<span class="property">c</span> === a2.<span class="property">b</span>.<span class="property">c</span>)</span><br><span class="line"><span class="comment">// 浅拷贝：新旧对象共享同一块内存空间</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 深拷贝 </span></span><br><span class="line"><span class="keyword">let</span> a3 = <span class="title function_">deepClone</span>(a1)  <span class="comment">// deepClone表示深拷贝的一些方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a3.<span class="property">b</span>.<span class="property">c</span> === a1.<span class="property">b</span>.<span class="property">c</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>递归： 自己调用自己  有递  有归</strong></p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">num</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(num === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num + <span class="title function_">fn</span>(num - <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">3</span>)  <span class="comment">// ==&gt; 3 + fn(2)  ==&gt; 3 + 2 + fn(1)  ==&gt; 3 + 2 + 1 ==&gt; 6</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">3</span>))  <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">5</span>)  <span class="comment">// ==&gt;  5 + fn(4) ==&gt;  5 + 4 + fn(3) ==&gt; 5 + 4 + 3 + fn(2) ==&gt; 5 + 4 + 3 + 2 + fn(1) </span></span><br><span class="line"><span class="comment">//   5 + 4 + 3 + 2 + 1  ==&gt; 15 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>递归的问题：</strong>递归爆栈（栈溢出）</p>
+<p>栈 &#x3D;&#x3D;&#x3D;&gt; 数据结构， 有先进后出的特征， 栈有深度， 如果超出了， 就会造成栈溢出报错</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">let</span> <span class="variable">res</span> <span class="operator">=</span> fn(<span class="number">10000</span>)</span><br><span class="line">console.log(res)</span><br></pre></td></tr></table></figure></div>
+
+<p>递归也可以看作一种循环（不断的自己调用自己），循环有终止条件，递归也需要有终止条件</p>
+<p>递归的终止条件， 一般写在第二次调用的前面，return可以终止函数的执行</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">count</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`这是第<span class="subst">$&#123;i&#125;</span>次调用`</span>)   </span><br><span class="line">    <span class="keyword">if</span>(i &gt;= <span class="number">1000</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">count</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">count</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="2">
+<li><strong>JSON</strong></li>
+</ol>
+<p>const res &#x3D; JSON.parse(JSON.stringify(obj))</p>
+<p>JSON.parse() 将JSON格式的字符串转为对象</p>
+<p>JSON.stringify() 将对象转化为JSON格式的字符串</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="variable">obj</span> <span class="operator">=</span> &#123;</span><br><span class="line">    name:<span class="string">&#x27;团团&#x27;</span>,</span><br><span class="line">    age:<span class="number">7</span>,</span><br><span class="line">    hobby:[<span class="string">&#x27;dance&#x27;</span>,<span class="string">&#x27;sing&#x27;</span>],</span><br><span class="line">    book:&#123;</span><br><span class="line">        title:<span class="string">&#x27;JS&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    test1: function()&#123;&#125;,</span><br><span class="line">    test2: undefined,</span><br><span class="line">    test3: Symbol(),</span><br><span class="line">    test4: NaN,</span><br><span class="line">    test5: Infinity,</span><br><span class="line">    test6: <span class="keyword">new</span> <span class="title class_">RegExp</span>(/e/,<span class="string">&#x27;g&#x27;</span>),</span><br><span class="line">    test7: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">console.log(a)</span><br><span class="line">console.log(typeof a)</span><br><span class="line"><span class="type">const</span> <span class="variable">res</span> <span class="operator">=</span> JSON.parse(JSON,stringify(obj))</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>缺陷：</strong></p>
+<ol>
+<li>如果拷贝对象的属性值是function，undefined，Symbol，这个键值对会丢失。</li>
+<li>如果是NaN和infinity，属性值会变为null。</li>
+<li>如果是正则变为空对象。</li>
+<li>如果是日期对象会变为字符串。</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console.log(res)</span></span><br><span class="line">res.<span class="property">hobby</span>[<span class="number">0</span>] = <span class="string">&#x27;run&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li><strong>lodash库</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;团团&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="number">7</span>,</span><br><span class="line">        <span class="attr">hobby</span>:[<span class="string">&#x27;dance&#x27;</span>,<span class="string">&#x27;sing&#x27;</span>],</span><br><span class="line">        <span class="attr">book</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&#x27;JS&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 使用loadsh库，实现深拷贝</span></span><br><span class="line">    <span class="keyword">const</span> o = _.<span class="title function_">cloneDeep</span>(obj)</span><br><span class="line">    <span class="comment">// console.log(o)</span></span><br><span class="line"></span><br><span class="line">    o.<span class="property">book</span>.<span class="property">title</span> = <span class="string">&#x27;java&#x27;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(o)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/09/10/flex%E5%B8%83%E5%B1%80/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数组的操作方法合集(1)</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/02/25/%E4%BD%9C%E7%94%A8%E5%9F%9F/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">作用域</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">小刘同学</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v0.3.2</a>
+        </div>
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fa-duotone fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list-tree"></i> <strong>Contents</strong></div>
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC"><span class="nav-text">赋值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">浅拷贝</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/header-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/back2top.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/local-search.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/code-copy.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/left-side-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v0.3.2/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

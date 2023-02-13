@@ -207,11 +207,6 @@
       </tags>
   </entry>
   <entry>
-    <title>title</title>
-    <url>/2022/11/17/new%20Set()/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2022/11/17/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link" href="https://hexo.io/">Hexo<i class="fas fa-external-link-alt"></i></a>! This is your very first post. Check <a class="link" href="https://hexo.io/docs/">documentation<i class="fas fa-external-link-alt"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link" href="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fas fa-external-link-alt"></i></a> or you can ask me on <a class="link" href="https://github.com/hexojs/hexo/issues">GitHub<i class="fas fa-external-link-alt"></i></a>.</p>
@@ -346,9 +341,66 @@
       </tags>
   </entry>
   <entry>
-    <title>title</title>
-    <url>/2022/11/17/new%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
+    <title>new Set()</title>
+    <url>/2022/04/15/new%20Set()/</url>
+    <content><![CDATA[<p><strong>Set集合，ES6标准中提供Set构造函数来创建集合，它是一种无重复元素的列表</strong></p>
+<h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><p>Set通过add()方法向集合中添加元素，访问集合的size属性可以获取集合中目前的元素数量，并且允许存储任何类型的唯一值</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">demo.<span class="title function_">add</span>(<span class="string">&#x27;jojo&#x27;</span>)</span><br><span class="line">demo.<span class="title function_">add</span>(<span class="string">&#x27;dio&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo) <span class="comment">// Set(2) &#123;&quot;jojo&quot;,&quot;dio&quot;&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo.<span class="property">size</span>) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213192834346.png" alt="image-20230213192834346"></p>
+<p>这是由以上代码打印出的，展开后可以看到一个[[Entries]]，那是因为Set的函数返回一个迭代器对象，因此不能以数组的形式去访问它，例如demo[0]，这样打印出来会是一个undefined</p>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h3><p>可以添加自然也可以删除，通过delete()删除Set集合中的某一个元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">demo.<span class="title function_">delete</span>(<span class="string">&#x27;dio&#x27;</span>) <span class="comment">// Set(1) &#123;&quot;jojo&quot;&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h3><p>清除所有该集合中的元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">demo.<span class="title function_">clear</span>() <span class="comment">// Set(0) &#123;&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h3><p>判断该集合是否有某个元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">demo.<span class="title function_">add</span>(<span class="number">1</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo.<span class="title function_">has</span>(<span class="number">1</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo.<span class="title function_">has</span>(<span class="number">2</span>)) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p>一般可以通过Set不可重复的属性进去去重的处理，可以省去部分判断</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> demo2 = <span class="keyword">new</span> <span class="title class_">Set</span>(arr)</span><br><span class="line">arr = [...demo2]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr) <span class="comment">// [1,2]</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p>顺序对每个元素进行callback函数一次, **<code>callback</code>**被调用三个参数，[values,values,集合本身]</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">a.<span class="title function_">add</span>(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">a.<span class="title function_">add</span>(<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">a.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v1,v2,v3</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v1,v2,v3)</span><br><span class="line">    <span class="comment">// b b Set(2) &#123;&quot;b&quot;, &quot;c&quot;&#125;</span></span><br><span class="line">    <span class="comment">// c c Set(2) &#123;&quot;b&quot;, &quot;c&quot;&#125;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>new的执行过程</title>
+    <url>/2021/10/12/new%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B/</url>
+    <content><![CDATA[<h4 id="new-的执行过程："><a href="#new-的执行过程：" class="headerlink" title="new 的执行过程："></a>new 的执行过程：</h4><ol>
+<li>首先创建一个新的空对象</li>
+<li>设置原型，将这个对象的原型设置为函数的prototype对象</li>
+<li>让函数的this指向这个对象</li>
+<li>执行构造函数的代码</li>
+<li>给这个新对象添加属性</li>
+<li>判断函数的返回值类型，如果是值类型，返回创建的对象，如果是引用类型，返回这个引用类型的对象</li>
+</ol>
+<p>​	<strong>用代码简单来理解就是：</strong></p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">_new</span>(<span class="params">fn</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> obj = &#123;&#125;<span class="comment">//创建一个新对象</span></span><br><span class="line">	obj.<span class="property">__proto__</span> = fn.<span class="property"><span class="keyword">prototype</span></span> <span class="comment">// 新对象继承Person.prototype</span></span><br><span class="line">        fn.<span class="title function_">call</span>(obj);<span class="comment">// 使用指定的参数调用构造函数 Person ，并将 this 绑定到新创建的对象</span></span><br><span class="line">        <span class="keyword">return</span> obj   <span class="comment">//返回最初创建的对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+
+
+<h4 id="手写："><a href="#手写：" class="headerlink" title="手写："></a>手写：</h4><ol>
+<li>第一参数作为构造函数，其余参数作为构造函数参数</li>
+<li>继承构造函数原型创建新对象</li>
+<li>执行构造函数</li>
+<li>结果为对象，返回结果，反之，返回新对象</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">One</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">One</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">//age:undefined name:undefined</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//Fun为构造函数, args表示传参</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myNew</span>(<span class="params">Fun, ...args</span>) &#123;</span><br><span class="line"><span class="comment">// 1.在内存中创建一个新对象</span></span><br><span class="line">    <span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 2.把新对象的原型指针指向构造函数的原型属性</span></span><br><span class="line">    obj.<span class="property">__proto__</span> = <span class="title class_">Fun</span>.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 3.改变this指向，并且执行构造函数内部的代码（传参）</span></span><br><span class="line">    <span class="keyword">let</span> res = <span class="title class_">Fun</span>.<span class="title function_">apply</span>(obj, args);</span><br><span class="line">    </span><br><span class="line"><span class="comment">// 4.判断函数执行结果的类型</span></span><br><span class="line">    <span class="keyword">if</span> (res <span class="keyword">instanceof</span> <span class="title class_">Object</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = <span class="title function_">myNew</span>(<span class="title class_">One</span>, <span class="string">&quot;XiaoMing&quot;</span>, <span class="string">&quot;18&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;newObj:&quot;</span>, obj); <span class="comment">//age:&quot;18&quot; name:&quot;XiaoMing&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
   </entry>
   <entry>
     <title>this指向总结</title>
@@ -417,9 +469,267 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>变量声明和提升</title>
-    <url>/2020/11/17/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%92%8C%E6%8F%90%E5%8D%87/</url>
+    <title>事件循环</title>
+    <url>/2020/01/17/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>作用域</title>
+    <url>/2021/02/25/%E4%BD%9C%E7%94%A8%E5%9F%9F/</url>
+    <content><![CDATA[<p>​	变量和函数的可访问范围 ，就是作用域控制着变量和函数的可见性 和 生命周期</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>直接卸载script或者JS代码（单独的JS文件），属于全局作用域</p>
+<p>可见性：全局作用域中声明的变量，在代码的任何地方都可以访问</p>
+<p>生命周期：伴随着页面的生命周期（页面关闭，销毁）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">10</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// 函数内部</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(num)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">fn</span>() <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// eg2 </span></span><br><span class="line">  <span class="comment">// 函数内部，如果不使用任何关键字声明变量，那么这个变量会变成window的属性</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">bar</span>(<span class="params"></span>) &#123;</span><br><span class="line">      abc = <span class="number">100</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">bar</span>()</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(abc)<span class="comment">//100</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="局部作用域（函数作用域）"><a href="#局部作用域（函数作用域）" class="headerlink" title="局部作用域（函数作用域）"></a>局部作用域（函数作用域）</h3><p>变量只能在函数内部访问，外部无法访问</p>
+<p>可见性：函数外部不能访问函数内部的变量</p>
+<p>生命周期：变量在函数调用执行后，就会销毁（清空&#x2F;回收）</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> abc = <span class="number">666</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(abc)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">foo</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><p><strong>为什么需要块级作用域？</strong></p>
+<p>用var声明变量时，内层变量可能覆盖外层变量，用来计数的循环变量i，会泄漏为全局变量</p>
+<p>{}包裹起来的叫代码块，使用let或者const声明的变量，在<code>&#123;&#125;</code>中会产生块级作用域</p>
+<p>特点：</p>
+<ol>
+<li>只有let、const 会产生块级作用域{}</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">         <span class="keyword">const</span> obj = &#123;</span><br><span class="line">             <span class="attr">name</span>:<span class="string">&#x27;ll&#x27;</span>,</span><br><span class="line">             <span class="attr">age</span>:<span class="number">18</span></span><br><span class="line">         &#125;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>块级作用域外部不能访问内部的变量</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>两个块级作用域中的变量相互不影响</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>if&#x2F;for是语句，但是let&#x2F;const声明的变量，会在内部形成块级作用域</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> temp = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="var、let、const的区别"><a href="#var、let、const的区别" class="headerlink" title="var、let、const的区别"></a>var、let、const的区别</h3><ol>
+<li>let &#x2F; const 可以形成块级作用域</li>
+<li>let &#x2F; const 不存在变量提升，var存在</li>
+<li>let &#x2F; const 不允许重复声明，var允许</li>
+<li>let &#x2F; const 存在暂时性死区TDZ</li>
+<li>浏览器中，var声明的全局变量会挂载到window对象上</li>
+</ol>
+<p>const ：一旦声明，必须马上赋值，并且不能改变值（简单类型不能改变值，引用类型不能改变地址）</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p><strong>什么是作用域链</strong>？</p>
+<p>函数是可以嵌套函数的，每个函数都有一个局部作用域，这样子，也会形成作用域的嵌套</p>
+<p>当访问内层作用域中的某个变量的时候，首先在当前作用域中查找这个变量，如果不存在，往上层查找，直到全局作用域</p>
+<p>作用域的本质：底层变量的查找机制 </p>
+<p>查找规则：</p>
+<ol>
+<li>优先在当前作用域中查找变量</li>
+<li>如果不存在，往上层作用域中查找变量，直到全局作用域</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 全局作用域</span></span><br><span class="line">        <span class="keyword">let</span> a = <span class="number">3</span></span><br><span class="line">        <span class="keyword">let</span> b = <span class="number">1</span></span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">f</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="comment">// 局部作用域</span></span><br><span class="line">            <span class="keyword">let</span> a = <span class="number">1</span></span><br><span class="line">            <span class="keyword">function</span> <span class="title function_">g</span>(<span class="params"></span>) &#123;</span><br><span class="line">                <span class="comment">// 局部作用域</span></span><br><span class="line">                a = <span class="number">2</span></span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="title function_">g</span>() <span class="comment">// 调用g</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">f</span>() <span class="comment">// 调用f</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>函数参数</title>
+    <url>/2020/12/09/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="argunments-对象"><a href="#argunments-对象" class="headerlink" title="argunments 对象"></a>argunments 对象</h3><ol>
+<li><p>除箭头函数以外，所有的函数都内置了（默认就存在，自带的）一个arguments对象</p>
+</li>
+<li><p>arguments 伪&#x2F;类数组 有length，有索引，没有push，pop等数组方法&#x3D;&#x3D;&#x3D;&gt; 接收了&#x2F;存储了我们传递过来的传参</p>
+</li>
+<li><p>arguments 对象，只存在于函数中</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getSum</span>(<span class="params">a,b</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">            <span class="comment">// console.log(argunments)</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; argunments.<span class="property">length</span>; i++)&#123;</span><br><span class="line">                sum += <span class="variable language_">arguments</span>[i]</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">return</span> sum</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">// const res = getSum(2,3)</span></span><br><span class="line">        <span class="keyword">const</span> res = <span class="title function_">getSum</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 箭头函数没有arguments</span></span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt;&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="剩余参数-rest"><a href="#剩余参数-rest" class="headerlink" title="剩余参数 rest"></a>剩余参数 rest</h3><p>形式 …变量名 变量名自定义</p>
+<ol>
+<li>剩余参数rest 是一个真数组，存了剩余的实参</li>
+<li>只能放到参数的最后一位</li>
+</ol>
+<h3 id="spread-扩展运算符"><a href="#spread-扩展运算符" class="headerlink" title="spread 扩展运算符"></a>spread 扩展运算符</h3><p>扩展运算符（spread）是三个点（…)</p>
+<p>它好比rest 参数的逆运算</p>
+<p>作用： 它不会改变原数组</p>
+<p><strong>主要引用</strong></p>
+<h4 id="1-求一个数组的最大最小值"><a href="#1-求一个数组的最大最小值" class="headerlink" title="1. 求一个数组的最大最小值"></a>1. 求一个数组的最大最小值</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">11</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">77</span>]</span><br><span class="line">        <span class="comment">// Math.max() 它本身接收的是参数列表</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">max</span>(...arr2))</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Math</span>.<span class="title function_">min</span>(...arr2))</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="2-复制-x2F-拷贝数组-浅拷贝"><a href="#2-复制-x2F-拷贝数组-浅拷贝" class="headerlink" title="2. 复制&#x2F;拷贝数组 (浅拷贝)"></a>2. 复制&#x2F;拷贝数组 (浅拷贝)</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a1 = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">        <span class="keyword">const</span> a2 = a1</span><br><span class="line">        <span class="comment">// 赋值，数组的直接赋值，赋的是地址，指向的是堆内存中同一个数组对象</span></span><br><span class="line">        a2[<span class="number">0</span>] === <span class="number">666</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a1)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a3 = [<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">        <span class="keyword">const</span> a4 = [...a3] <span class="comment">// ==&gt;[5,6,7]</span></span><br><span class="line">        a3[<span class="number">0</span>] = <span class="number">9</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a3) <span class="comment">//[5,6,7]</span></span><br><span class="line">        <span class="comment">// ==&gt; 数组里面的元素是基本数据类型，修改数组元素的值，相互不影响</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-合并数组-浅拷贝"><a href="#3-合并数组-浅拷贝" class="headerlink" title="3.合并数组 (浅拷贝)"></a>3.合并数组 (浅拷贝)</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> a5 = [<span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]</span><br><span class="line">        <span class="keyword">const</span> a6 = [<span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ES5 的合并 concat</span></span><br><span class="line">        <span class="keyword">const</span> resArr = a5.<span class="title function_">concat</span>(a6)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resArr)</span><br><span class="line">        <span class="comment">// ES6 ...</span></span><br><span class="line">        <span class="keyword">const</span> a7 = [...a5, ...a6]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a7)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="4-将字符串转为数组"><a href="#4-将字符串转为数组" class="headerlink" title="4.将字符串转为数组"></a>4.将字符串转为数组</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// [...str] ===&gt; 将字符串展开为数组</span></span><br><span class="line">        <span class="keyword">const</span> str = <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">        <span class="keyword">const</span> a8 = [...<span class="string">&#x27;hello&#x27;</span>]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a8)</span><br><span class="line">        <span class="comment">// 反转字符串</span></span><br><span class="line">        <span class="keyword">const</span> res = str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ==&gt; 扩展运算符的方式</span></span><br><span class="line">        <span class="keyword">const</span> resStr = [...str].<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) <span class="comment">// ===&gt; 推荐</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resStr)</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="5-把伪数组转为真数组"><a href="#5-把伪数组转为真数组" class="headerlink" title="5.把伪数组转为真数组"></a>5.把伪数组转为真数组</h4><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> divs = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(divs)</span><br><span class="line">        <span class="comment">// divs.push(666) 伪数组报错</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> resDiv = [...divs]</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resDiv)</span><br><span class="line">        resDiv.<span class="title function_">push</span>(<span class="number">666</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(resDiv)</span><br><span class="line"></span><br><span class="line"><span class="comment">//将伪数组转为真数组</span></span><br><span class="line"><span class="comment">//[...likeArr] 使用扩展运算符</span></span><br><span class="line"><span class="comment">//Array.from(likeArr)</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>解释一下原型和原型链</title>
+    <url>/2021/12/11/%E5%8E%9F%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <content><![CDATA[<h3 id="原型prototype"><a href="#原型prototype" class="headerlink" title="原型prototype"></a>原型prototype</h3><p>原型：字面意思 原来的模型， 原始祖先， 原始的模型</p>
+<p>JS原型 ： 原型就是一个对象，也叫原型对象</p>
+<ol>
+<li>所有的函数，都有一个prototype属性（显示原型），这个属性是一个指针，指向原型对象。（原型）</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(<span class="title class_">Person</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>原型上默认有一个叫做constructor的属性，指向这个构造函数本身</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Person.prototype ==&gt; &#123;</span></span><br><span class="line"><span class="comment">//     constructor: Person</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> === <span class="title class_">Person</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>我们可以往这个原型对象中添加属性和方法</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sing</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hahaha&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">demo</span> = <span class="string">&#x27;我是原型上的一个属性&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">dir</span>(<span class="title class_">Person</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Star</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">    <span class="comment">// 公共的属性写到构造函数上面</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 公共的方法写到原型对象上  节约了内存</span></span><br><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sing</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">cheer</span> = <span class="string">&#x27;Day Day up&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="4">
+<li>所有通过构造函数创建的对象，都共享原型上的属性和方法！</li>
+</ol>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="variable">ldh</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;刘德华&#x27;</span>, <span class="number">20</span>)</span><br><span class="line"><span class="type">const</span> <span class="variable">zxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;张学友&#x27;</span>, <span class="number">21</span>)</span><br><span class="line"></span><br><span class="line">ldh.sing()</span><br><span class="line">zxy.sing()</span><br><span class="line">console.log(ldh.cheer)</span><br><span class="line">console.log(zxy.cheer)</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(ldh, zxy)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ldh.__proto__ === Star.prototype</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="构造函数中的原型方法"><a href="#构造函数中的原型方法" class="headerlink" title="构造函数中的原型方法"></a>构造函数中的原型方法</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">let</span> <span class="variable">that</span> <span class="operator">=</span> <span class="literal">null</span>  <span class="comment">// 全局变量</span></span><br><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">    console.log(<span class="built_in">this</span>)   <span class="comment">// 指向的是实例 Star &#123;name: &#x27;团团&#x27;, age: 7&#125;</span></span><br><span class="line">    that = <span class="built_in">this</span> <span class="comment">// that把this的指向/状态 保存起来了 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>​	我们声明了一个全局变量that，在调用new的时候，保存this的状态， 调用结束后，<br>​	如果that还是指向构造函数创建的实例，说明我们的结论没问题</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> that1 = <span class="literal">null</span></span><br><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sing</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)   <span class="comment">// Star &#123;name: &#x27;团团&#x27;, age: 7&#125;</span></span><br><span class="line">    that1 = <span class="variable language_">this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>构造函数里面的this指向的是实例</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> tt = <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>原型方法中的this指向的还是实例</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line">tt.<span class="title function_">sing</span>()   <span class="comment">// 调用之后才能执行，才能看this指向</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="constructor属性"><a href="#constructor属性" class="headerlink" title="constructor属性"></a>constructor属性</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// constructor</span></span><br><span class="line">console.dir(Star)</span><br></pre></td></tr></table></figure></div>
+
+<p>​	首先，constructor在原型（对象）上，每个原型（对象）上默认都有一个constructor属性，指向构造函数本身，表示我，我这个原型，是哪个构造函数的原型 和哪个构造函数相关联，&#x3D;&#x3D;&gt; 其实就相当于是一个标识</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> === <span class="title class_">Star</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有对象的隐式原型都指向构造函数的显示原型</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(tt.<span class="property">__proto__</span> === <span class="title class_">Star</span>.<span class="property"><span class="keyword">prototype</span></span>)    <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// tt.__proto__ ==&gt; 指向的也是原型对象，找到的</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(tt.<span class="property">__proto__</span>.<span class="property">constructor</span> === <span class="title class_">Star</span>)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="constructor的应用"><a href="#constructor的应用" class="headerlink" title="constructor的应用"></a>constructor的应用</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 每个原型对象中都有一个constructor属性，指回构造函数本身</span></span><br><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1. 这种方式给原型添加公共方法，不会修改原型</span></span><br><span class="line"><span class="comment">// Star.prototype.sing = function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;sing&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// Star.prototype.dance = function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;dance&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// Star.prototype.rap = function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;rap&#x27;)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如果直接给Star.prototype赋值一个对象，这个时候，原型上的默认属性constructor就会丢失我们可以手动给这个对象添加constructor属性，指回这个构造函数</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2. 这种以对象赋值的方式，会覆盖掉原型。 需要我们手动添加一个constructor属性</span></span><br><span class="line">Star.prototype = &#123;</span><br><span class="line">    constructor: Star,</span><br><span class="line">    sing:function()&#123;</span><br><span class="line">        console.log(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    dance:function()&#123;</span><br><span class="line">        console.log(<span class="string">&#x27;dance&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    rap:function()&#123;</span><br><span class="line">        console.log(<span class="string">&#x27;rap&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br><span class="line">tt.__proto__ === Star.prototype  <span class="comment">// ==&gt; 原型对象</span></span><br><span class="line">console.log(ldh)</span><br><span class="line">tt.sing()</span><br><span class="line">tt.dance()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="隐式属性"><a href="#隐式属性" class="headerlink" title="隐式属性"></a>隐式属性</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line">function <span class="title function_">Star</span><span class="params">(name, age)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">    <span class="built_in">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line">Star.prototype.sing = function()&#123;</span><br><span class="line">    console.log(<span class="string">&#x27;sing&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">tt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&#x27;团团&#x27;</span>, <span class="number">7</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>所有对象，都有一个__proto__属性（隐式原型），属性值也是一个对象（其实就是指向原型对象）</li>
+<li>__proto__隐式原型</li>
+</ol>
+<p>&#x3D;&#x3D;&gt; 实例通过__proto__访问(链接)到了它的原型对象</p>
+<p>&#x3D;&#x3D;&gt; __proto__相当于一个桥梁，链接，实例就通过__proto__访问到原型对象</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 2. 对象的隐式原型指向构造函数的显示原型</span></span><br><span class="line">tt.__proto__ === Star.prototype <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">function <span class="title function_">Animal</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.color = <span class="string">&#x27;orange&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">cat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Animal</span>()</span><br><span class="line">console.log(cat)</span><br><span class="line"></span><br><span class="line">console.log(cat.__proto__ === Animal.prototype)     <span class="comment">// true</span></span><br><span class="line">console.log(Animal.prototype.constructor === Animal)    <span class="comment">//true</span></span><br><span class="line">console.log(cat.__proto__.constructor === Animal)   <span class="comment">//true</span></span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li><p>实例对象.<strong>proto</strong> &#x3D;&#x3D;&#x3D; 构造函数.prototype’ &#x3D;&#x3D;&gt; 原型</p>
+</li>
+<li><p><strong>proto</strong> 表示了实例和原型之间的一个关系，相当于就是一个桥梁，实例通过它访问原型</p>
+</li>
+</ol>
+<h3 id="构造函数-实例-原型的关系"><a href="#构造函数-实例-原型的关系" class="headerlink" title="构造函数-实例-原型的关系"></a>构造函数-实例-原型的关系</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line">function <span class="title function_">Person</span><span class="params">(name)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>四条线：</p>
+<ol>
+<li>构造函数.prototype &#x3D;&#x3D;&#x3D;&gt; 原型对象</li>
+<li>原型对象.constructor &#x3D;&#x3D;&#x3D;&gt; 构造函数</li>
+<li>实例对象.<strong>proto</strong> &#x3D;&#x3D;&#x3D;&gt; 原型对象</li>
+<li>构造函数 new , 创建出 实例对象</li>
+</ol>
+<p>高程四 第八章 P250 : 实例与构造函数原型之间有直接的联系（<strong>proto</strong>），但实例与构造函数之间没有直接联系</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213204512399.png" alt="image-20230213204512399"></p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line">function <span class="title function_">Person</span><span class="params">(name)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">person</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"></span><br><span class="line">console.log(person.__proto__)   <span class="comment">// ===&gt; person这个实例对象的原型</span></span><br><span class="line">console.log(Person.prototype)   <span class="comment">// ===&gt; Person构造函数的原型</span></span><br><span class="line"></span><br><span class="line">person.__proto__ === Person.prototype</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原型链：</span></span><br><span class="line"><span class="comment">// ==&gt;所有的对象都有一个__proto__，属性值也是一个对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. Person.prototype也是一个对象，所以，它也有__proto__属性，属性值也是对象。</span></span><br><span class="line"><span class="comment">// console.dir(Person)</span></span><br><span class="line">console.log(Person.prototype.__proto__)  <span class="comment">// ===&gt; __proto__ 访问到原型</span></span><br><span class="line"><span class="comment">// Person.prototype.__proto__ ===&gt; &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==&gt; 原型上默认有一个constructor属性，指回的构造函数(我们通过这个知道了Person.prototype的构造函数是Object)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==&gt; 规则4 所有对象的隐式原型指向它的构造函数的显示原型</span></span><br><span class="line"><span class="comment">// Person.prototype</span></span><br><span class="line">Person.prototype.__proto__ === Object.prototype</span><br><span class="line"><span class="comment">// person.__proto__ === Person.prototype</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Person.prototype.__proto__</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ===&gt; Person.prototype 这个原型对象 是 Object这个构造函数创建的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Object  它是一个构造函数</span></span><br><span class="line"><span class="comment">// Object.prototype ===&gt; 得到的也是一个原型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.prototype这个原型上默认有一个constructor属性，指向构造函数本身</span></span><br><span class="line">Object.prototype.constructor === Object</span><br><span class="line"></span><br><span class="line"><span class="comment">// Object.prototype                ===&gt; 原型</span></span><br><span class="line"><span class="comment">// Person.prototype.__proto__      ===&gt; 原型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 也就是，上面这两个 指向的 都是 Object这个构造函数的原型</span></span><br><span class="line">console.log(Person.prototype.__proto__ === Object.prototype)    <span class="comment">// true</span></span><br></pre></td></tr></table></figure></div>
+
+<p>我们说的原型,可以说是构造函数的原型,也可以说实例的原型,指的都是同一个</p>
+<p>构造函数 通过 prototype 访问到它的原型</p>
+<p>实例   通过 <strong>proto</strong> 访问到它的原型</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 3. Object.prototype</span></span><br><span class="line"><span class="comment">// Object.prototype它也是一个原型对象，所以，它也有一个__proto__属性</span></span><br><span class="line">console.log(Object.prototype)</span><br><span class="line">console.log(Object.prototype.__proto__ === <span class="literal">null</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>正常的原型链终止到Object.prototype, 也就是Object.prototype.<strong>proto</strong> &#x3D;&#x3D;&#x3D; null</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="什么是原型？"><a href="#什么是原型？" class="headerlink" title="什么是原型？"></a>什么是原型？</h4><ol>
+<li>原型就是一个对象</li>
+<li>.每个函数都有prototype属性，它的值是一个指针（地址），指向的就是原型对象</li>
+<li>通过构造函数创建的实例，都有一个__proto__属性，也指向原型对象</li>
+<li>原型上默认有个constructor属性，指回构造函数</li>
+<li>我们可以把一些公共的属性和方法放到原型上，节约内存</li>
+<li>所有通过构造函数创建的实例都共享原型上的属性和方法</li>
+</ol>
+<h4 id="什么是原型链？"><a href="#什么是原型链？" class="headerlink" title="什么是原型链？"></a>什么是原型链？</h4><ol>
+<li>每个对象通过__proto__属性都能访问到它的原型（对象），原型对象也有它的原型对象（原型也有它的原型）</li>
+<li>当访问一个对象属性或方法的时候，先在自身中寻找</li>
+<li>如果没有，就会沿着__proto__这条链向上查找，知道最顶层Object.prototype为止</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>变量提升和函数提升</title>
+    <url>/2020/11/17/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%92%8C%E6%8F%90%E5%8D%87/</url>
+    <content><![CDATA[<p>在es6之前没有块级作用域</p>
+<p>js代码的执行分为两个阶段：</p>
+<p>第一个阶段，在当前词法环境中注册所有的变量和函数声明，就是解析</p>
+<p>第二个阶段，解析完成，进行执行</p>
+<ul>
+<li>词法：词法作用域根据<strong>源代码声明变量的位置</strong>来确定变量在何处可用嵌套函数可访问声明</li>
+</ul>
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>用var声明会有变量提升</p>
+<ul>
+<li>var声明的变量会在执行之前，提升到当前作用域的最前面</li>
+<li>只提升变量声明，不提升变量赋值，然后依次执行代码</li>
+<li>如果不赋值，默认undefined</li>
+</ul>
+<p>不建议使用var声明变量</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a; <span class="comment">// 声明</span></span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">6</span> <span class="comment">// 声明并赋值  ==&gt; 初始化</span></span><br><span class="line"></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(num + <span class="string">&#x27;把剑&#x27;</span>)  <span class="comment">// undefined把剑</span></span><br><span class="line">        <span class="keyword">var</span> num = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(num)  <span class="comment">// undefined</span></span><br><span class="line">            <span class="keyword">var</span> num = <span class="number">29</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">fn</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="函数提升"><a href="#函数提升" class="headerlink" title="函数提升"></a>函数提升</h3><p><strong>创建函数的两种方式：</strong></p>
+<ol>
+<li>函数声明式</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span> (num1, num2) &#123;</span><br><span class="line"><span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>函数表达式</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> sum = <span class="keyword">function</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line"><span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>只有<strong>函数声明</strong>才存在函数提升</p>
+<p><strong>js只提升声明，不提升初始化</strong> （值），如果先使用变量在声明并初始化（赋值），变量是undefined</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num) <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="keyword">var</span> num</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num)</span><br><span class="line">num = <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>总结：</strong></p>
+<ol>
+<li>会把用function声明的函数，提升到当前作用域的最前面</li>
+<li>表达式的情况，如果是用var声明的函数，只提升声明，不提升赋值 &#x3D;&#x3D; &gt; 建议：先声明，后调用</li>
+</ol>
+<h3 id="变量提升和函数提升的区别"><a href="#变量提升和函数提升的区别" class="headerlink" title="变量提升和函数提升的区别"></a>变量提升和函数提升的区别</h3><ol>
+<li>都会提升到当前作用域最顶端</li>
+<li>只有声明本身会被提升，而赋值操作不会被提升</li>
+<li>函数提升只提升声明式，不提升表达式</li>
+<li>函数提升的优先级大于变量提升的优先级</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>关于回流重绘</title>
@@ -482,9 +792,107 @@
       </tags>
   </entry>
   <entry>
-    <title>数组的操作方法合集(4）</title>
-    <url>/2021/09/30/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%954/</url>
-    <content><![CDATA[<p><img lazyload src="/images/loading.svg" data-src="/../img/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png" alt="数组的常见操作方法.png"></p>
+    <title>垃圾回收</title>
+    <url>/2020/01/17/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>数组的操作方法合集(2)</title>
+    <url>/2021/09/20/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%952/</url>
+    <content><![CDATA[<h3 id="不改变原数组的方法-8个"><a href="#不改变原数组的方法-8个" class="headerlink" title="不改变原数组的方法(8个):"></a><strong>不改变原数组的方法(8个):</strong></h3><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">ES5</span>：</span><br><span class="line">    slice、join、toLocateString、toStrigin、cancat、indexOf、lastIndexOf、</span><br><span class="line">    <span class="title class_">ES7</span>：</span><br><span class="line">    includes</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="slice-浅拷贝数组的元素"><a href="#slice-浅拷贝数组的元素" class="headerlink" title="slice() 浅拷贝数组的元素"></a><strong>slice() 浅拷贝数组的元素</strong></h4><p>定义： 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象，且原数组不会被修改。</p>
+<p><strong>注意</strong>：字符串也有一个slice() 方法是用来提取字符串的，不要弄混了。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">slice</span>(begin, end);</span><br></pre></td></tr></table></figure></div>
+
+<p>begin(可选): 索引数值,接受负值，从该索引处开始提取原数组中的元素,默认值为0。</p>
+<p>end(可选):索引数值(不包括),接受负值，在该索引处前结束提取原数组元素，默认值为数组末尾(包括最后一个元素)。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// [&#x27;hello&#x27;]</span></span><br><span class="line">    a[<span class="number">0</span>]=<span class="string">&#x27;改变原数组&#x27;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;hello&#x27;]</span></span><br><span class="line">    b[<span class="number">0</span>]=<span class="string">&#x27;改变拷贝的数组&#x27;</span>;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;改变拷贝的数组&#x27;]</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如上：新数组是浅拷贝的，<strong>元素是简单数据类型，改变之后不会互相干扰</strong></p>
+<p>如果是<strong>复杂数据类型(对象,数组)的话，改变其中一个，另外一个也会改变</strong></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b,a); <span class="comment">// [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]  [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// a[0].name=&#x27;改变原数组&#x27;;</span></span><br><span class="line">    <span class="comment">// console.log(b,a); // [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// b[0].name=&#x27;改变拷贝数组&#x27;,b[0].koro=&#x27;改变拷贝数组&#x27;;</span></span><br><span class="line">    <span class="comment">//  [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="join-数组转字符串"><a href="#join-数组转字符串" class="headerlink" title="join() 数组转字符串"></a><strong>join() 数组转字符串</strong></h4><p>定义: join() 方法用于把数组中的所有元素通过指定的分隔符进行分隔放入一个字符串，返回生成的字符串。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">join</span>(str)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:str(可选): 指定要使用的分隔符，默认使用逗号作为分隔符。</p>
+<blockquote>
+<p>使用join方法或者下文说到的toString方法时，当数组中的元素也是数组或者是对象时会出现什么情况？</p>
+</blockquote>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [[<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="string">&#x27;23&#x27;</span>],<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str1=a.<span class="title function_">join</span>(); <span class="comment">// OBKoro1,23,test</span></span><br><span class="line">    <span class="keyword">let</span> b= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="attr">age</span>:<span class="string">&#x27;23&#x27;</span>&#125;,<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str2 = b.<span class="title function_">join</span>(); <span class="comment">// [object Object],test</span></span><br><span class="line">    <span class="comment">// 对象转字符串推荐JSON.stringify(obj);</span></span><br></pre></td></tr></table></figure></div>
+
+<p>所以，<code>join()/toString()</code>方法在数组元素是数组的时候，会将里面的数组也调用<code>join()/toString()</code>,如果是对象的话，对象会被转为<code>[object Object]</code>字符串。</p>
+<h4 id="toLocaleString-数组转字符串"><a href="#toLocaleString-数组转字符串" class="headerlink" title="toLocaleString() 数组转字符串"></a><strong>toLocaleString() 数组转字符串</strong></h4><p>定义: 返回一个表示数组元素的字符串。该字符串由数组中的每个元素的 toLocaleString() 返回值经调用 join() 方法连接（由逗号隔开）组成。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：无</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;,<span class="number">23</span>,<span class="string">&#x27;abcd&#x27;</span>,<span class="keyword">new</span> <span class="title class_">Date</span>()];</span><br><span class="line"><span class="keyword">let</span> str=a.<span class="title function_">toLocaleString</span>(); <span class="comment">// [object Object],23,abcd,2018/5/28 下午1:52:20</span></span><br></pre></td></tr></table></figure></div>
+
+<p>如上述栗子：调用数组的<code>toLocaleString</code>方法，数组中的每个元素都会调用自身的<code>toLocaleString</code>方法，对象调用对象的<code>toLocaleString</code>Date调用Date的<code>toLocaleString</code></p>
+<h4 id="toString-数组转字符串-不推荐"><a href="#toString-数组转字符串-不推荐" class="headerlink" title="toString() 数组转字符串 不推荐"></a><strong>toString() 数组转字符串 不推荐</strong></h4><p>该方法的效果和join方法一样，都是用于数组转字符串的，但是与join方法相比没有优势，也不能自定义字符串的分隔符，因此不推荐使用。</p>
+<h4 id="cancat-合并两个或多个数组"><a href="#cancat-合并两个或多个数组" class="headerlink" title="cancat 合并两个或多个数组"></a><strong>cancat 合并两个或多个数组</strong></h4><p>定义： 方法用于合并两个或多个数组，返回一个新数组。</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> newArr =oldArray.<span class="title function_">concat</span>(arrayX,arrayX,......,arrayX)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>arrayX（必须）：该参数可以是具体的值，也可以是数组对象。可以是任意多个。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">    <span class="keyword">let</span> b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line">    <span class="comment">//连接两个数组</span></span><br><span class="line">    <span class="keyword">let</span> newVal=a.<span class="title function_">concat</span>(b); <span class="comment">// [1,2,3,4,5,6]</span></span><br><span class="line">    <span class="comment">// 连接三个数组</span></span><br><span class="line">    <span class="keyword">let</span> c = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">    <span class="keyword">let</span> newVal2 = a.<span class="title function_">concat</span>(b, c); <span class="comment">// [1,2,3,4,5,6,7,8,9]</span></span><br><span class="line">    <span class="comment">// 添加元素</span></span><br><span class="line">    <span class="keyword">let</span> newVal3 = a.<span class="title function_">concat</span>(<span class="string">&#x27;添加元素&#x27;</span>,b, c,<span class="string">&#x27;再加一个&#x27;</span>); </span><br><span class="line">    <span class="comment">// [1,2,3,&quot;添加元素&quot;,4,5,6,7,8,9,&quot;再加一个&quot;]</span></span><br><span class="line">   <span class="comment">// 合并嵌套数组  会浅拷贝嵌套数组</span></span><br><span class="line">   <span class="keyword">let</span> d = [<span class="number">1</span>,<span class="number">2</span> ];</span><br><span class="line">   <span class="keyword">let</span> f = [<span class="number">3</span>,[<span class="number">4</span>]];</span><br><span class="line">   <span class="keyword">let</span> newVal4 = d.<span class="title function_">concat</span>(f); <span class="comment">// [1,2,3,[4]]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES6扩展运算符-合并数组"><a href="#ES6扩展运算符-合并数组" class="headerlink" title="ES6扩展运算符...合并数组"></a><strong>ES6扩展运算符<code>...</code>合并数组</strong></h4><p>因为ES6的语法更简洁易懂，所以现在合并数组我大部分用<code>...</code> 来处理，<code>...</code>运算符可以实现<code>cancat</code>的每个栗子，且更简洁和具有高度自定义数组元素位置的效果。</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">let</span> b = [ <span class="number">4</span>,...a, <span class="number">4</span>, <span class="number">4</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">//  [2, 3, 4, 5] [4,2,3,4,5,4,4]</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="indexOf-查找数组是否存在某个元素，返回下标"><a href="#indexOf-查找数组是否存在某个元素，返回下标" class="headerlink" title="indexOf() 查找数组是否存在某个元素，返回下标"></a><strong>indexOf() 查找数组是否存在某个元素，返回下标</strong></h4><p>定义: 返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">indexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>searchElement(必须):被查找的元素</p>
+<p>fromIndex(可选):开始查找的位置(不能大于等于数组的长度，返回-1)，接受负值，默认值为0。</p>
+<p>严格相等的搜索:</p>
+<p>数组的indexOf搜索跟字符串的indexOf不一样,数组的indexOf使用严格相等<code>===</code>搜索元素，即<strong>数组元素要完全匹配</strong>才能搜索成功。</p>
+<p><strong>注意</strong>：indexOf()不能识别<code>NaN</code></p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;啦啦&#x27;</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">24</span>,<span class="title class_">NaN</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;NaN&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦啦&#x27;</span>)); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure></div>
+
+<p>使用场景：</p>
+<ol>
+<li>数组去重</li>
+<li>根据获取的数组下标执行操作，改变数组中的值等。</li>
+<li>判断是否存在，执行操作。</li>
+</ol>
+<h4 id="lastIndexOf-查找指定元素在数组中的最后一个位置"><a href="#lastIndexOf-查找指定元素在数组中的最后一个位置" class="headerlink" title="lastIndexOf() 查找指定元素在数组中的最后一个位置"></a><strong>lastIndexOf() 查找指定元素在数组中的最后一个位置</strong></h4><p>定义: 方法返回指定元素,在数组中的最后一个的索引，如果不存在则返回 -1。（从数组后面往前查找）</p>
+<p>语法:</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">arr.<span class="title function_">lastIndexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数:</p>
+<p>searchElement(必须): 被查找的元素</p>
+<p>fromIndex(可选): 逆向查找开始位置，默认值数组的长度-1，即查找整个数组。</p>
+<p>关于fromIndex有三个规则:</p>
+<ol>
+<li>正值。如果该值大于或等于数组的长度，则整个数组会被查找。</li>
+<li>负值。将其视为从数组末尾向前的偏移。(比如-2，从数组最后第二个元素开始往前查找)</li>
+<li>负值。其绝对值大于数组长度，则方法返回 -1，即数组不会被查找。</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="number">4</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="string">&#x27;Koro1&#x27;</span>]; <span class="comment">// 数组长度为10</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,4); // 从下标4开始往前找 返回下标2</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,100); //  大于或数组的长度 查找整个数组 返回9</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,-11); // -1 数组不会被查找</span></span><br><span class="line"> <span class="keyword">let</span> b=a.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;Koro1&#x27;</span>,-<span class="number">9</span>); <span class="comment">// 从第二个元素4往前查找，没有找到 返回-1</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="ES7-includes-查找数组是否包含某个元素-返回布尔"><a href="#ES7-includes-查找数组是否包含某个元素-返回布尔" class="headerlink" title="ES7 includes() 查找数组是否包含某个元素 返回布尔"></a><strong>ES7 includes() 查找数组是否包含某个元素 返回布尔</strong></h4><p>定义： 返回一个布尔值，表示某个数组是否包含给定的值</p>
+<p>语法：</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">includes</span>(searchElement,fromIndex=<span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>参数：</p>
+<p>searchElement(必须):被查找的元素</p>
+<p>fromIndex(可选):默认值为0，参数表示搜索的起始位置，接受负值。正值超过数组长度，数组不会被搜索，返回false。负值绝对值超过长数组度，重置从0开始搜索。</p>
+<p><strong>includes方法是为了弥补indexOf方法的缺陷而出现的:</strong></p>
+<ol>
+<li>indexOf方法不能识别<code>NaN</code></li>
+<li>indexOf方法检查是否包含某个值不够语义化，需要判断是否不等于<code>1</code>，表达不够直观</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="title class_">NaN</span>];</span><br><span class="line">    <span class="comment">// let b=a.includes(NaN); // true 识别NaN</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,100); // false 超过数组长度 不搜索</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-3);  // true 从倒数第三个元素开始搜索 </span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-100);  // true 负值绝对值超过数组长度，搜索整个数组</span></span><br></pre></td></tr></table></figure></div>
+
+<p>兼容性(MDN): chrome47, Firefox 43,Edge 14,Opera 34, Safari 9,IE 未实现。</p>
 ]]></content>
       <tags>
         <tag>js</tag>
@@ -620,115 +1028,190 @@
       </tags>
   </entry>
   <entry>
-    <title>数组的操作方法合集</title>
-    <url>/2022/09/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>数组的操作方法合集(2)</title>
-    <url>/2021/09/20/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%952/</url>
-    <content><![CDATA[<h3 id="不改变原数组的方法-8个"><a href="#不改变原数组的方法-8个" class="headerlink" title="不改变原数组的方法(8个):"></a><strong>不改变原数组的方法(8个):</strong></h3><div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">ES5</span>：</span><br><span class="line">    slice、join、toLocateString、toStrigin、cancat、indexOf、lastIndexOf、</span><br><span class="line">    <span class="title class_">ES7</span>：</span><br><span class="line">    includes</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="slice-浅拷贝数组的元素"><a href="#slice-浅拷贝数组的元素" class="headerlink" title="slice() 浅拷贝数组的元素"></a><strong>slice() 浅拷贝数组的元素</strong></h4><p>定义： 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象，且原数组不会被修改。</p>
-<p><strong>注意</strong>：字符串也有一个slice() 方法是用来提取字符串的，不要弄混了。</p>
-<p>语法:</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">slice</span>(begin, end);</span><br></pre></td></tr></table></figure></div>
-
-<p>begin(可选): 索引数值,接受负值，从该索引处开始提取原数组中的元素,默认值为0。</p>
-<p>end(可选):索引数值(不包括),接受负值，在该索引处前结束提取原数组元素，默认值为数组末尾(包括最后一个元素)。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// [&#x27;hello&#x27;]</span></span><br><span class="line">    a[<span class="number">0</span>]=<span class="string">&#x27;改变原数组&#x27;</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;hello&#x27;]</span></span><br><span class="line">    b[<span class="number">0</span>]=<span class="string">&#x27;改变拷贝的数组&#x27;</span>;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">// [&#x27;改变原数组&#x27;,&#x27;world&#x27;] [&#x27;改变拷贝的数组&#x27;]</span></span><br></pre></td></tr></table></figure></div>
-
-<p>如上：新数组是浅拷贝的，<strong>元素是简单数据类型，改变之后不会互相干扰</strong></p>
-<p>如果是<strong>复杂数据类型(对象,数组)的话，改变其中一个，另外一个也会改变</strong></p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;];</span><br><span class="line">    <span class="keyword">let</span> b=a.<span class="title function_">slice</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(b,a); <span class="comment">// [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]  [&#123;&quot;name&quot;:&quot;OBKoro1&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// a[0].name=&#x27;改变原数组&#x27;;</span></span><br><span class="line">    <span class="comment">// console.log(b,a); // [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变原数组&quot;&#125;]</span></span><br><span class="line">    <span class="comment">// b[0].name=&#x27;改变拷贝数组&#x27;,b[0].koro=&#x27;改变拷贝数组&#x27;;</span></span><br><span class="line">    <span class="comment">//  [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;] [&#123;&quot;name&quot;:&quot;改变拷贝数组&quot;,&quot;koro&quot;:&quot;改变拷贝数组&quot;&#125;]</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="join-数组转字符串"><a href="#join-数组转字符串" class="headerlink" title="join() 数组转字符串"></a><strong>join() 数组转字符串</strong></h4><p>定义: join() 方法用于把数组中的所有元素通过指定的分隔符进行分隔放入一个字符串，返回生成的字符串。</p>
-<p>语法:</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">join</span>(str)</span><br></pre></td></tr></table></figure></div>
-
-<p>参数:str(可选): 指定要使用的分隔符，默认使用逗号作为分隔符。</p>
-<blockquote>
-<p>使用join方法或者下文说到的toString方法时，当数组中的元素也是数组或者是对象时会出现什么情况？</p>
-</blockquote>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a= [[<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="string">&#x27;23&#x27;</span>],<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str1=a.<span class="title function_">join</span>(); <span class="comment">// OBKoro1,23,test</span></span><br><span class="line">    <span class="keyword">let</span> b= [&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>,<span class="attr">age</span>:<span class="string">&#x27;23&#x27;</span>&#125;,<span class="string">&#x27;test&#x27;</span>];</span><br><span class="line">    <span class="keyword">let</span> str2 = b.<span class="title function_">join</span>(); <span class="comment">// [object Object],test</span></span><br><span class="line">    <span class="comment">// 对象转字符串推荐JSON.stringify(obj);</span></span><br></pre></td></tr></table></figure></div>
-
-<p>所以，<code>join()/toString()</code>方法在数组元素是数组的时候，会将里面的数组也调用<code>join()/toString()</code>,如果是对象的话，对象会被转为<code>[object Object]</code>字符串。</p>
-<h4 id="toLocaleString-数组转字符串"><a href="#toLocaleString-数组转字符串" class="headerlink" title="toLocaleString() 数组转字符串"></a><strong>toLocaleString() 数组转字符串</strong></h4><p>定义: 返回一个表示数组元素的字符串。该字符串由数组中的每个元素的 toLocaleString() 返回值经调用 join() 方法连接（由逗号隔开）组成。</p>
-<p>语法:</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">toLocaleString</span>()</span><br></pre></td></tr></table></figure></div>
-
-<p>参数：无</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[&#123;<span class="attr">name</span>:<span class="string">&#x27;OBKoro1&#x27;</span>&#125;,<span class="number">23</span>,<span class="string">&#x27;abcd&#x27;</span>,<span class="keyword">new</span> <span class="title class_">Date</span>()];</span><br><span class="line"><span class="keyword">let</span> str=a.<span class="title function_">toLocaleString</span>(); <span class="comment">// [object Object],23,abcd,2018/5/28 下午1:52:20</span></span><br></pre></td></tr></table></figure></div>
-
-<p>如上述栗子：调用数组的<code>toLocaleString</code>方法，数组中的每个元素都会调用自身的<code>toLocaleString</code>方法，对象调用对象的<code>toLocaleString</code>Date调用Date的<code>toLocaleString</code></p>
-<h4 id="toString-数组转字符串-不推荐"><a href="#toString-数组转字符串-不推荐" class="headerlink" title="toString() 数组转字符串 不推荐"></a><strong>toString() 数组转字符串 不推荐</strong></h4><p>该方法的效果和join方法一样，都是用于数组转字符串的，但是与join方法相比没有优势，也不能自定义字符串的分隔符，因此不推荐使用。</p>
-<h4 id="cancat-合并两个或多个数组"><a href="#cancat-合并两个或多个数组" class="headerlink" title="cancat 合并两个或多个数组"></a><strong>cancat 合并两个或多个数组</strong></h4><p>定义： 方法用于合并两个或多个数组，返回一个新数组。</p>
-<p>语法：</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> newArr =oldArray.<span class="title function_">concat</span>(arrayX,arrayX,......,arrayX)</span><br></pre></td></tr></table></figure></div>
-
-<p>参数：</p>
-<p>arrayX（必须）：该参数可以是具体的值，也可以是数组对象。可以是任意多个。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">    <span class="keyword">let</span> b = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line">    <span class="comment">//连接两个数组</span></span><br><span class="line">    <span class="keyword">let</span> newVal=a.<span class="title function_">concat</span>(b); <span class="comment">// [1,2,3,4,5,6]</span></span><br><span class="line">    <span class="comment">// 连接三个数组</span></span><br><span class="line">    <span class="keyword">let</span> c = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line">    <span class="keyword">let</span> newVal2 = a.<span class="title function_">concat</span>(b, c); <span class="comment">// [1,2,3,4,5,6,7,8,9]</span></span><br><span class="line">    <span class="comment">// 添加元素</span></span><br><span class="line">    <span class="keyword">let</span> newVal3 = a.<span class="title function_">concat</span>(<span class="string">&#x27;添加元素&#x27;</span>,b, c,<span class="string">&#x27;再加一个&#x27;</span>); </span><br><span class="line">    <span class="comment">// [1,2,3,&quot;添加元素&quot;,4,5,6,7,8,9,&quot;再加一个&quot;]</span></span><br><span class="line">   <span class="comment">// 合并嵌套数组  会浅拷贝嵌套数组</span></span><br><span class="line">   <span class="keyword">let</span> d = [<span class="number">1</span>,<span class="number">2</span> ];</span><br><span class="line">   <span class="keyword">let</span> f = [<span class="number">3</span>,[<span class="number">4</span>]];</span><br><span class="line">   <span class="keyword">let</span> newVal4 = d.<span class="title function_">concat</span>(f); <span class="comment">// [1,2,3,[4]]</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="ES6扩展运算符-合并数组"><a href="#ES6扩展运算符-合并数组" class="headerlink" title="ES6扩展运算符...合并数组"></a><strong>ES6扩展运算符<code>...</code>合并数组</strong></h4><p>因为ES6的语法更简洁易懂，所以现在合并数组我大部分用<code>...</code> 来处理，<code>...</code>运算符可以实现<code>cancat</code>的每个栗子，且更简洁和具有高度自定义数组元素位置的效果。</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">    <span class="keyword">let</span> b = [ <span class="number">4</span>,...a, <span class="number">4</span>, <span class="number">4</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a,b); <span class="comment">//  [2, 3, 4, 5] [4,2,3,4,5,4,4]</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="indexOf-查找数组是否存在某个元素，返回下标"><a href="#indexOf-查找数组是否存在某个元素，返回下标" class="headerlink" title="indexOf() 查找数组是否存在某个元素，返回下标"></a><strong>indexOf() 查找数组是否存在某个元素，返回下标</strong></h4><p>定义: 返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1。</p>
-<p>语法:</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">indexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
-
-<p>参数:</p>
-<p>searchElement(必须):被查找的元素</p>
-<p>fromIndex(可选):开始查找的位置(不能大于等于数组的长度，返回-1)，接受负值，默认值为0。</p>
-<p>严格相等的搜索:</p>
-<p>数组的indexOf搜索跟字符串的indexOf不一样,数组的indexOf使用严格相等<code>===</code>搜索元素，即<strong>数组元素要完全匹配</strong>才能搜索成功。</p>
-<p><strong>注意</strong>：indexOf()不能识别<code>NaN</code></p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;啦啦&#x27;</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">24</span>,<span class="title class_">NaN</span>]</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;NaN&#x27;</span>));  <span class="comment">// -1 </span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="title function_">indexOf</span>(<span class="string">&#x27;啦啦&#x27;</span>)); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure></div>
-
-<p>使用场景：</p>
-<ol>
-<li>数组去重</li>
-<li>根据获取的数组下标执行操作，改变数组中的值等。</li>
-<li>判断是否存在，执行操作。</li>
-</ol>
-<h4 id="lastIndexOf-查找指定元素在数组中的最后一个位置"><a href="#lastIndexOf-查找指定元素在数组中的最后一个位置" class="headerlink" title="lastIndexOf() 查找指定元素在数组中的最后一个位置"></a><strong>lastIndexOf() 查找指定元素在数组中的最后一个位置</strong></h4><p>定义: 方法返回指定元素,在数组中的最后一个的索引，如果不存在则返回 -1。（从数组后面往前查找）</p>
-<p>语法:</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">arr.<span class="title function_">lastIndexOf</span>(searchElement,fromIndex)</span><br></pre></td></tr></table></figure></div>
-
-<p>参数:</p>
-<p>searchElement(必须): 被查找的元素</p>
-<p>fromIndex(可选): 逆向查找开始位置，默认值数组的长度-1，即查找整个数组。</p>
-<p>关于fromIndex有三个规则:</p>
-<ol>
-<li>正值。如果该值大于或等于数组的长度，则整个数组会被查找。</li>
-<li>负值。将其视为从数组末尾向前的偏移。(比如-2，从数组最后第二个元素开始往前查找)</li>
-<li>负值。其绝对值大于数组长度，则方法返回 -1，即数组不会被查找。</li>
-</ol>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="number">4</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="string">&#x27;Koro1&#x27;</span>]; <span class="comment">// 数组长度为10</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,4); // 从下标4开始往前找 返回下标2</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,100); //  大于或数组的长度 查找整个数组 返回9</span></span><br><span class="line"> <span class="comment">// let b=a.lastIndexOf(&#x27;Koro1&#x27;,-11); // -1 数组不会被查找</span></span><br><span class="line"> <span class="keyword">let</span> b=a.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;Koro1&#x27;</span>,-<span class="number">9</span>); <span class="comment">// 从第二个元素4往前查找，没有找到 返回-1</span></span><br></pre></td></tr></table></figure></div>
-
-<h4 id="ES7-includes-查找数组是否包含某个元素-返回布尔"><a href="#ES7-includes-查找数组是否包含某个元素-返回布尔" class="headerlink" title="ES7 includes() 查找数组是否包含某个元素 返回布尔"></a><strong>ES7 includes() 查找数组是否包含某个元素 返回布尔</strong></h4><p>定义： 返回一个布尔值，表示某个数组是否包含给定的值</p>
-<p>语法：</p>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line">array.<span class="title function_">includes</span>(searchElement,fromIndex=<span class="number">0</span>)</span><br></pre></td></tr></table></figure></div>
-
-<p>参数：</p>
-<p>searchElement(必须):被查找的元素</p>
-<p>fromIndex(可选):默认值为0，参数表示搜索的起始位置，接受负值。正值超过数组长度，数组不会被搜索，返回false。负值绝对值超过长数组度，重置从0开始搜索。</p>
-<p><strong>includes方法是为了弥补indexOf方法的缺陷而出现的:</strong></p>
-<ol>
-<li>indexOf方法不能识别<code>NaN</code></li>
-<li>indexOf方法检查是否包含某个值不够语义化，需要判断是否不等于<code>1</code>，表达不够直观</li>
-</ol>
-<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="string">&#x27;OB&#x27;</span>,<span class="string">&#x27;Koro1&#x27;</span>,<span class="number">1</span>,<span class="title class_">NaN</span>];</span><br><span class="line">    <span class="comment">// let b=a.includes(NaN); // true 识别NaN</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,100); // false 超过数组长度 不搜索</span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-3);  // true 从倒数第三个元素开始搜索 </span></span><br><span class="line">    <span class="comment">// let b=a.includes(&#x27;Koro1&#x27;,-100);  // true 负值绝对值超过数组长度，搜索整个数组</span></span><br></pre></td></tr></table></figure></div>
-
-<p>兼容性(MDN): chrome47, Firefox 43,Edge 14,Opera 34, Safari 9,IE 未实现。</p>
+    <title>数组的操作方法合集(4）</title>
+    <url>/2021/09/30/%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%954/</url>
+    <content><![CDATA[<p><img lazyload src="/images/loading.svg" data-src="/../img/%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95.png" alt="数组的常见操作方法.png"></p>
 ]]></content>
       <tags>
         <tag>js</tag>
       </tags>
   </entry>
   <entry>
-    <title>title</title>
-    <url>/2022/11/17/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
+    <title>深拷贝/浅拷贝</title>
+    <url>/2021/03/10/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/</url>
+    <content><![CDATA[<h4 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h4><p>赋值：将某一个数值或对象赋给某个变量的过程</p>
+<ul>
+<li><p>基本数据类型：值传递，赋值之后两个变量互不影响</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195557503.png" alt="image-20230213195557503"></p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;大家早上吃饭了吗&#x27;</span></span><br><span class="line"><span class="keyword">let</span> b = a</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>引用数据类型：赋值（地址），两个变量具有相同的引用，指向同一个对象，相互之间有影响</p>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195605580.png" alt="image-20230213195605580"></p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;你不知道的JavaScript 上&#x27;</span>,</span><br><span class="line">    <span class="attr">book</span>:&#123;</span><br><span class="line">        <span class="attr">price</span>:<span class="string">&#x27;300$&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj</span><br><span class="line"></span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&#x27;hhh&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="property">name</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>赋值不是浅拷贝，没有堆内存中新创建一个对象</strong></p>
+<h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><ul>
+<li><p><strong>定义</strong>：</p>
+<ol>
+<li><strong>在堆内存中新开辟一个内存空间，创建一个新对象</strong></li>
+<li><strong>新对象只包含被拷贝对象第一层基本数据类型和引用类型的地址</strong></li>
+</ol>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195612037.png" alt="image-20230213195612037"></p>
+</li>
+<li><p><strong>注意</strong>：</p>
+<ol>
+<li>第一层如果是基本数据类型，那么前后两个对象的属性互不影响</li>
+<li>第一层如果是引用类型，引用值改变，会相互影响</li>
+</ol>
+</li>
+<li><p><strong>浅拷贝方式</strong>：</p>
+<ol>
+<li><strong>Object.assign(target,source)</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj2 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, obj1)</span><br><span class="line"><span class="comment">// 第一层，属性值如果是基本数据类型，拷贝前后的两个对象的这个属性互不影响</span></span><br><span class="line">obj2.<span class="property">name</span> = <span class="string">&#x27;java&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>)    <span class="comment">// 基本数据类型判断全等 值和类型</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">book</span> === obj2.<span class="property">book</span>)    <span class="comment">// 引用类型，看地址是否一样</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一层，属性值如果是引用类型，引用类型的值会改变，会相互影响</span></span><br><span class="line">obj1.<span class="property">book</span>.<span class="property">price</span> = <span class="number">56</span></span><br><span class="line"><span class="comment">// console.log(obj2)</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="2">
+<li><strong>对象拓展运算符</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj3 = &#123; ...obj &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3)</span><br><span class="line">obj3.<span class="property">name</span> = <span class="string">&#x27;test&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line">obj3.<span class="property">book</span>.<span class="property">price</span> = <span class="number">222</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">book</span>.<span class="property">price</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="3">
+<li><strong>Array.prototype.contact()</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, &#123; <span class="attr">user</span>: <span class="string">&#x27;杰伦&#x27;</span> &#125;]</span><br><span class="line"><span class="keyword">const</span> arr2 = arr1.<span class="title function_">concat</span>()</span><br><span class="line"><span class="comment">// console.log(arr2)</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">666</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2)</span><br><span class="line">arr[<span class="number">2</span>].<span class="property">user</span> = <span class="string">&#x27;磊磊&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2)</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="4">
+<li><strong>Array.prototype.slice()</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, &#123; <span class="attr">user</span>: <span class="string">&#x27;杰伦&#x27;</span> &#125;]</span><br><span class="line"><span class="keyword">const</span> arr4 = arr3.<span class="title function_">slice</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr3)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr4)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><ul>
+<li><p><strong>定义：</strong></p>
+<ol>
+<li><strong>在堆内存中开辟一个新的空间存新的对象</strong></li>
+<li><strong>递归的拷贝原对象的属性和方法，拷贝前后的两个对象，互不影响</strong></li>
+</ol>
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213195625187.png" alt="image-20230213195625187"></p>
+</li>
+<li><p><strong>深拷贝方式：</strong></p>
+<ol>
+<li><p><strong>递归函数</strong></p>
+<p>一层一层的，每一层都新创建一个内存空间</p>
+</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;JS&#x27;</span>,</span><br><span class="line">    <span class="attr">book</span>: &#123;</span><br><span class="line">        <span class="attr">title</span>: <span class="string">&quot;you don&#x27;t know JS&quot;</span>,</span><br><span class="line">        <span class="attr">price</span>: <span class="string">&#x27;300$&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a1 = &#123; <span class="attr">b</span>: &#123; <span class="attr">c</span>: &#123;&#125; &#125; &#125;</span><br><span class="line"><span class="keyword">let</span> a2 = &#123; ...a1 &#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a1.<span class="property">b</span>.<span class="property">c</span> === a2.<span class="property">b</span>.<span class="property">c</span>)</span><br><span class="line"><span class="comment">// 浅拷贝：新旧对象共享同一块内存空间</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 深拷贝 </span></span><br><span class="line"><span class="keyword">let</span> a3 = <span class="title function_">deepClone</span>(a1)  <span class="comment">// deepClone表示深拷贝的一些方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a3.<span class="property">b</span>.<span class="property">c</span> === a1.<span class="property">b</span>.<span class="property">c</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>递归： 自己调用自己  有递  有归</strong></p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">num</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(num === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num + <span class="title function_">fn</span>(num - <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">3</span>)  <span class="comment">// ==&gt; 3 + fn(2)  ==&gt; 3 + 2 + fn(1)  ==&gt; 3 + 2 + 1 ==&gt; 6</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">3</span>))  <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">5</span>)  <span class="comment">// ==&gt;  5 + fn(4) ==&gt;  5 + 4 + fn(3) ==&gt; 5 + 4 + 3 + fn(2) ==&gt; 5 + 4 + 3 + 2 + fn(1) </span></span><br><span class="line"><span class="comment">//   5 + 4 + 3 + 2 + 1  ==&gt; 15 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">5</span>))</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>递归的问题：</strong>递归爆栈（栈溢出）</p>
+<p>栈 &#x3D;&#x3D;&#x3D;&gt; 数据结构， 有先进后出的特征， 栈有深度， 如果超出了， 就会造成栈溢出报错</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">let</span> <span class="variable">res</span> <span class="operator">=</span> fn(<span class="number">10000</span>)</span><br><span class="line">console.log(res)</span><br></pre></td></tr></table></figure></div>
+
+<p>递归也可以看作一种循环（不断的自己调用自己），循环有终止条件，递归也需要有终止条件</p>
+<p>递归的终止条件， 一般写在第二次调用的前面，return可以终止函数的执行</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">count</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`这是第<span class="subst">$&#123;i&#125;</span>次调用`</span>)   </span><br><span class="line">    <span class="keyword">if</span>(i &gt;= <span class="number">1000</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">count</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">count</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<ol start="2">
+<li><strong>JSON</strong></li>
+</ol>
+<p>const res &#x3D; JSON.parse(JSON.stringify(obj))</p>
+<p>JSON.parse() 将JSON格式的字符串转为对象</p>
+<p>JSON.stringify() 将对象转化为JSON格式的字符串</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="variable">obj</span> <span class="operator">=</span> &#123;</span><br><span class="line">    name:<span class="string">&#x27;团团&#x27;</span>,</span><br><span class="line">    age:<span class="number">7</span>,</span><br><span class="line">    hobby:[<span class="string">&#x27;dance&#x27;</span>,<span class="string">&#x27;sing&#x27;</span>],</span><br><span class="line">    book:&#123;</span><br><span class="line">        title:<span class="string">&#x27;JS&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    test1: function()&#123;&#125;,</span><br><span class="line">    test2: undefined,</span><br><span class="line">    test3: Symbol(),</span><br><span class="line">    test4: NaN,</span><br><span class="line">    test5: Infinity,</span><br><span class="line">    test6: <span class="keyword">new</span> <span class="title class_">RegExp</span>(/e/,<span class="string">&#x27;g&#x27;</span>),</span><br><span class="line">    test7: <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">console.log(a)</span><br><span class="line">console.log(typeof a)</span><br><span class="line"><span class="type">const</span> <span class="variable">res</span> <span class="operator">=</span> JSON.parse(JSON,stringify(obj))</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>缺陷：</strong></p>
+<ol>
+<li>如果拷贝对象的属性值是function，undefined，Symbol，这个键值对会丢失。</li>
+<li>如果是NaN和infinity，属性值会变为null。</li>
+<li>如果是正则变为空对象。</li>
+<li>如果是日期对象会变为字符串。</li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(res)</span></span><br><span class="line">res.<span class="property">hobby</span>[<span class="number">0</span>] = <span class="string">&#x27;run&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li><strong>lodash库</strong></li>
+</ol>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&#x27;团团&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>:<span class="number">7</span>,</span><br><span class="line">        <span class="attr">hobby</span>:[<span class="string">&#x27;dance&#x27;</span>,<span class="string">&#x27;sing&#x27;</span>],</span><br><span class="line">        <span class="attr">book</span>:&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&#x27;JS&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 使用loadsh库，实现深拷贝</span></span><br><span class="line">    <span class="keyword">const</span> o = _.<span class="title function_">cloneDeep</span>(obj)</span><br><span class="line">    <span class="comment">// console.log(o)</span></span><br><span class="line"></span><br><span class="line">    o.<span class="property">book</span>.<span class="property">title</span> = <span class="string">&#x27;java&#x27;</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(o)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>箭头函数</title>
+    <url>/2020/12/07/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p><strong>在ES6中 允许使用“箭头”（&#x3D;&gt;）定义函数，称为 箭头函数。</strong></p>
+<h4 id="箭头函数的写法"><a href="#箭头函数的写法" class="headerlink" title="箭头函数的写法"></a>箭头函数的写法</h4><ol>
+<li>箭头函数 基本语法</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>)</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fn1</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn1</span>()</span><br><span class="line"><span class="comment">// 传参</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fn2</span> = (<span class="params">x</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn2</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>只有一个形参的时候，可以省略小括号</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn3</span> = x =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn3</span>(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>只有一行代码的时候，我们可以省略大括号</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn4</span> = x =&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line"><span class="title function_">fn4</span>(<span class="number">6</span>)</span><br></pre></td></tr></table></figure></div>
+
+<ol start="4">
+<li>只有一行代码的时候，可以省略return</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn5</span> = x =&gt; x + x</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn5</span>(<span class="number">1</span>))</span><br></pre></td></tr></table></figure></div>
+
+<ol start="5">
+<li>箭头函数可以直接返回一个对象, 但必须在对象外面加上括号</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn6</span> = (<span class="params">name</span>) =&gt; (&#123; <span class="attr">user_name</span>: name &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn6</span>(<span class="string">&#x27;刘德华&#x27;</span>))</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="箭头函数参数"><a href="#箭头函数参数" class="headerlink" title="箭头函数参数"></a>箭头函数参数</h4><ol>
+<li>普通函数有arguments对象</li>
+<li>箭头函数没有arguments对象，但是可以使用剩余参数<code>...args</code></li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 求传入参数的总和</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getSum</span> = (<span class="params">...args</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">	args.<span class="title function_">forEach</span>(<span class="function"><span class="params">el</span> =&gt;</span> &#123;</span><br><span class="line">		 sum += el</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> res = <span class="title function_">getSum</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="箭头函数this"><a href="#箭头函数this" class="headerlink" title="箭头函数this"></a>箭头函数this</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 以前this的指向：  谁调用的这个函数，this 就指向谁</span></span><br><span class="line"><span class="comment">// console.log(this)  // window</span></span><br><span class="line"><span class="comment">// 普通函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)  <span class="comment">// window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">fn</span>()</span><br><span class="line"><span class="comment">// 对象方法里面的this</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;andy&#x27;</span>,</span><br><span class="line">  <span class="attr">sayHi</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)  <span class="comment">// obj</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">sayHi</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 箭头函数的this  是上一层作用域的this 指向</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)  <span class="comment">// window</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>()</span><br><span class="line"><span class="comment">// 对象方法箭头函数 this</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">uname</span>: <span class="string">&#x27;pink老师&#x27;</span>,</span><br><span class="line">  <span class="attr">sayHi</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)  <span class="comment">// this 指向谁？</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.<span class="title function_">sayHi</span>()</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>箭头函数没有自己的this对象</li>
+<li>箭头函数不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。</li>
+<li>箭头函数不可以作为构造函数，也就是不可以对箭头函数使用<code>new</code>命令</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>继承</title>
+    <url>/2022/11/17/%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>闭包</title>
+    <url>/2020/01/17/%E9%97%AD%E5%8C%85/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>防抖节流</title>
+    <url>/2020/01/17/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>

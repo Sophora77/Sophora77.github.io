@@ -9,7 +9,7 @@
     
     <title>
         
-            数组的操作方法合集 |
+            new Set() |
         
         这是一个博客
     </title>
@@ -140,7 +140,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">数组的操作方法合集</h1></span>
+            <span class="title-hover-animation"><h1 style="font-size:2rem; font-weight: bold; margin: 10px 0;">new Set()</h1></span>
         </div>
 
         
@@ -159,13 +159,17 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-duotone fa-pen-line"></i>&nbsp;
-        <span class="pc">2022-09-10 18:56:56</span>
-        <span class="mobile">2022-09-10 18:56</span>
+        <span class="pc">2022-04-15 18:56:26</span>
+        <span class="mobile">2022-04-15 18:56</span>
     </span>
     
     
 
     
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>392 Words</span>
+        </span>
     
     
         <span class="article-min2read article-meta-item">
@@ -181,7 +185,36 @@
         
 
         <div class="article-content markdown-body">
-            
+            <p><strong>Set集合，ES6标准中提供Set构造函数来创建集合，它是一种无重复元素的列表</strong></p>
+<h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><p>Set通过add()方法向集合中添加元素，访问集合的size属性可以获取集合中目前的元素数量，并且允许存储任何类型的唯一值</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> demo = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">demo.<span class="title function_">add</span>(<span class="string">&#x27;jojo&#x27;</span>)</span><br><span class="line">demo.<span class="title function_">add</span>(<span class="string">&#x27;dio&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo) <span class="comment">// Set(2) &#123;&quot;jojo&quot;,&quot;dio&quot;&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo.<span class="property">size</span>) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></div>
+
+<p><img lazyload src="/images/loading.svg" data-src="/../img/image-20230213192834346.png" alt="image-20230213192834346"></p>
+<p>这是由以上代码打印出的，展开后可以看到一个[[Entries]]，那是因为Set的函数返回一个迭代器对象，因此不能以数组的形式去访问它，例如demo[0]，这样打印出来会是一个undefined</p>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h3><p>可以添加自然也可以删除，通过delete()删除Set集合中的某一个元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo.<span class="title function_">delete</span>(<span class="string">&#x27;dio&#x27;</span>) <span class="comment">// Set(1) &#123;&quot;jojo&quot;&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h3><p>清除所有该集合中的元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">demo.<span class="title function_">clear</span>() <span class="comment">// Set(0) &#123;&#125;</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h3><p>判断该集合是否有某个元素</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">demo.<span class="title function_">add</span>(<span class="number">1</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo.<span class="title function_">has</span>(<span class="number">1</span>)) <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo.<span class="title function_">has</span>(<span class="number">2</span>)) <span class="comment">// false</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p>一般可以通过Set不可重复的属性进去去重的处理，可以省去部分判断</p>
+<div class="highlight-container" data-rel="Jsx"><figure class="iseeu highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>]</span><br><span class="line"><span class="keyword">let</span> demo2 = <span class="keyword">new</span> <span class="title class_">Set</span>(arr)</span><br><span class="line">arr = [...demo2]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr) <span class="comment">// [1,2]</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p>顺序对每个元素进行callback函数一次, **<code>callback</code>**被调用三个参数，[values,values,集合本身]</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Set</span>()</span><br><span class="line">a.<span class="title function_">add</span>(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">a.<span class="title function_">add</span>(<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">a.<span class="title function_">forEach</span>(<span class="function">(<span class="params">v1,v2,v3</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(v1,v2,v3)</span><br><span class="line">    <span class="comment">// b b Set(2) &#123;&quot;b&quot;, &quot;c&quot;&#125;</span></span><br><span class="line">    <span class="comment">// c c Set(2) &#123;&quot;b&quot;, &quot;c&quot;&#125;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
         </div>
 
         
@@ -194,13 +227,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/11/17/%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/"
+                           href="/2022/11/17/%E7%BB%A7%E6%89%BF/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">title</span>
+                                <span class="post-nav-title-item">继承</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -210,10 +243,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/11/17/this%E6%8C%87%E5%90%91/"
+                           href="/2021/12/11/%E5%8E%9F%E5%9E%8B%E4%BB%A5%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">this指向总结</span>
+                                <span class="post-nav-title-item">解释一下原型和原型链</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -324,7 +357,7 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div style="font-size: 1.3rem;margin-top: 0; margin-bottom: 0.8rem; transition-duration: 0.1s;"><i class="fa-solid fa-list-tree"></i> <strong>Contents</strong></div>
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#add"><span class="nav-text">add()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-text">delete()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clear"><span class="nav-text">clear()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#has"><span class="nav-text">has()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-text">去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach"><span class="nav-text">forEach()</span></a></li></ol>
     </div>
 </div>
         </aside>
